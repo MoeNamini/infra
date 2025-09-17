@@ -1,18 +1,23 @@
 # infra/tests/test_s3_upload.py
 import boto3
-from moto import mock_s3
+from moto import mock_aws
 import os
 import pytest
 from botocore.exceptions import ClientError
 from pathlib import Path
 import subprocess
 
-@mock_s3
+@mock_aws
 def test_upload_file():
     # create mock bucket
-    s3 = boto3.client("s3", region_name="eu-central-1")
+    region = "eu-central-1"
+    s3 = boto3.client("s3", region_name=region)
+
     bucket = "test-bucket"
-    s3.create_bucket(Bucket=bucket)
+    s3.create_bucket(
+        Bucket=bucket,
+        CreateBucketConfiguration={"LocationConstraint": region}
+    )
 
     # prepare a sample file
     p = Path("infra/test.txt")
