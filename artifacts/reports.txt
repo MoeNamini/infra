@@ -1,6 +1,4 @@
-[2025-09-20 12:34:03] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
-[2025-09-20 12:34:03] tests/test_s3_uploader.py::test_upload_file | Dir: tests | PASS 
-[2025-09-20 12:34:03] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
-[2025-09-20 15:08:50] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
-[2025-09-20 15:08:50] tests/test_s3_uploader.py::test_upload_file | Dir: tests | PASS 
-[2025-09-20 15:08:50] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+...                                                                      [100%]
+3 passed in 0.98s
+25-09-20 19:01:21] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-20 19:01:21] tests/test_sanity.py::test_sanity | Dir: tests | PASS 

@@ -1,0 +1,12 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.1, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\moham\OneDrive\Desktop\GitHub\infra\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\moham\OneDrive\Desktop\GitHub\infra
+collecting ... collected 3 items
+
+tests/test_positive.py::test_upload_file_successful PASSED               [ 33%]
+tests/test_s3_upload.py::test_upload_file PASSED                         [ 66%]
+tests/test_sanity.py::test_sanity PASSED                                 [100%]
+
+- generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
+============================== 3 passed in 0.94s ==============================
