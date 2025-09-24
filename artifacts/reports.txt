@@ -2,3 +2,14 @@
 3 passed in 0.98s
 25-09-20 19:01:21] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
 [2025-09-20 19:01:21] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-09-22 23:10:02] pre-push: running pytest...
+[2025-09-22 23:10:04] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-22 23:10:04] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-22 23:10:04] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+=== pytest run: 2025-09-22 23:10:02 ===
+[2025-09-22 23:10:02] tests.test_positive::test_upload_file_successful | PASS 
+[2025-09-22 23:10:02] tests.test_s3_upload::test_upload_file | PASS 
+[2025-09-22 23:10:02] tests.test_sanity::test_sanity | PASS 
+[2025-09-22 23:10:02] RESULT: ALL TESTS PASSED
+
+[2025-09-24 23:17:04] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 

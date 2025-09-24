@@ -9,4 +9,4 @@ tests/test_s3_upload.py::test_upload_file PASSED                         [ 66%]
 tests/test_sanity.py::test_sanity PASSED                                 [100%]
 
 - generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
-============================== 3 passed in 0.94s ==============================
+============================== 3 passed in 1.12s ==============================
