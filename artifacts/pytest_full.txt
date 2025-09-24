@@ -2,21 +2,18 @@
 platform win32 -- Python 3.11.1, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\moham\OneDrive\Desktop\GitHub\infra\.venv\Scripts\python.exe
 cachedir: .pytest_cache
 rootdir: C:\Users\moham\OneDrive\Desktop\GitHub\infra
-collecting ... collected 3 items / 1 error
+collecting ... collected 4 items / 1 error
 
 =================================== ERRORS ====================================
 _________________ ERROR collecting tests/test_presign_unit.py _________________
-ImportError while importing test module 'C:\Users\moham\OneDrive\Desktop\GitHub\infra\tests\test_presign_unit.py'.
-Hint: make sure your test modules/packages have valid Python names.
-Traceback:
-..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-tests\test_presign_unit.py:3: in <module>
-    from generate_presigned_put import generate_presigned_put
-E   ModuleNotFoundError: No module named 'generate_presigned_put'
+import file mismatch:
+imported module 'test_presign_unit' has this __file__ attribute:
+  C:\Users\moham\OneDrive\Desktop\GitHub\infra\test_presign_unit.py
+which is not the same as the test file we want to collect:
+  C:\Users\moham\OneDrive\Desktop\GitHub\infra\tests\test_presign_unit.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
 - generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
 =========================== short test summary info ===========================
 ERROR tests/test_presign_unit.py
 !!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-============================== 1 error in 0.49s ===============================
+============================== 1 error in 0.46s ===============================
