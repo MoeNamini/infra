@@ -2,11 +2,21 @@
 platform win32 -- Python 3.11.1, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\moham\OneDrive\Desktop\GitHub\infra\.venv\Scripts\python.exe
 cachedir: .pytest_cache
 rootdir: C:\Users\moham\OneDrive\Desktop\GitHub\infra
-collecting ... collected 3 items
+collecting ... collected 3 items / 1 error
 
-tests/test_positive.py::test_upload_file_successful PASSED               [ 33%]
-tests/test_s3_upload.py::test_upload_file PASSED                         [ 66%]
-tests/test_sanity.py::test_sanity PASSED                                 [100%]
-
+=================================== ERRORS ====================================
+_________________ ERROR collecting tests/test_presign_unit.py _________________
+ImportError while importing test module 'C:\Users\moham\OneDrive\Desktop\GitHub\infra\tests\test_presign_unit.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_presign_unit.py:3: in <module>
+    from generate_presigned_put import generate_presigned_put
+E   ModuleNotFoundError: No module named 'generate_presigned_put'
 - generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
-============================== 3 passed in 1.12s ==============================
+=========================== short test summary info ===========================
+ERROR tests/test_presign_unit.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.49s ===============================
