@@ -2,18 +2,12 @@
 platform win32 -- Python 3.11.1, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\moham\OneDrive\Desktop\GitHub\infra\.venv\Scripts\python.exe
 cachedir: .pytest_cache
 rootdir: C:\Users\moham\OneDrive\Desktop\GitHub\infra
-collecting ... collected 4 items / 1 error
+collecting ... collected 4 items
 
-=================================== ERRORS ====================================
-_________________ ERROR collecting tests/test_presign_unit.py _________________
-import file mismatch:
-imported module 'test_presign_unit' has this __file__ attribute:
-  C:\Users\moham\OneDrive\Desktop\GitHub\infra\test_presign_unit.py
-which is not the same as the test file we want to collect:
-  C:\Users\moham\OneDrive\Desktop\GitHub\infra\tests\test_presign_unit.py
-HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
+tests/test_positive.py::test_upload_file_successful PASSED               [ 25%]
+tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse PASSED [ 50%]
+tests/test_s3_upload.py::test_upload_file PASSED                         [ 75%]
+tests/test_sanity.py::test_sanity PASSED                                 [100%]
+
 - generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
-=========================== short test summary info ===========================
-ERROR tests/test_presign_unit.py
-!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-============================== 1 error in 0.46s ===============================
+============================== 4 passed in 0.82s ==============================
