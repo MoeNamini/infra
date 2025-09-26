@@ -145,3 +145,40 @@ tests\test_presign_unit.py:23: KeyError
 [2025-09-25 10:46:55] tests.test_sanity::test_sanity | PASS 
 [2025-09-25 10:46:55] RESULT: ALL TESTS PASSED
 
+[2025-09-25 10:48:58] pre-push: running pytest...
+[2025-09-25 10:48:59] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-25 10:48:59] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-25 10:48:59] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-25 10:48:59] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+=== pytest run: 2025-09-25 10:48:58 ===
+[2025-09-25 10:48:58] tests.test_positive::test_upload_file_successful | PASS 
+[2025-09-25 10:48:58] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-09-25 10:48:58] tests.test_s3_upload::test_upload_file | PASS 
+[2025-09-25 10:48:58] tests.test_sanity::test_sanity | PASS 
+[2025-09-25 10:48:58] RESULT: ALL TESTS PASSED
+
+[2025-09-25 11:18:43] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-25 12:09:33] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-25 12:09:33] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-25 12:09:33] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-25 12:09:33] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-09-25 12:18:14] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-25 12:18:14] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-25 12:18:15] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-25 12:18:15] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-09-25 12:22:38] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-25 12:22:38] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-25 12:22:38] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-25 12:22:38] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-09-25 12:37:51] pre-push: running pytest...
+[2025-09-25 12:37:52] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-25 12:37:52] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-25 12:37:52] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-25 12:37:52] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+=== pytest run: 2025-09-25 12:37:51 ===
+[2025-09-25 12:37:51] tests.test_positive::test_upload_file_successful | PASS 
+[2025-09-25 12:37:51] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-09-25 12:37:51] tests.test_s3_upload::test_upload_file | PASS 
+[2025-09-25 12:37:51] tests.test_sanity::test_sanity | PASS 
+[2025-09-25 12:37:51] RESULT: ALL TESTS PASSED
+
