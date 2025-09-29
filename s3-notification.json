@@ -1,0 +1,11 @@
+{
+  "LambdaFunctionConfigurations": [
+    {
+      "Id": "S3FileProcessorTrigger",
+      "LambdaFunctionArn": "arn:aws:lambda:eu-central-1:131471595295:function:lambda-static-01", 
+      "Events": [
+        "s3:ObjectCreated:*"
+      ]
+    }
+  ]
+}

@@ -2,6 +2,13 @@
 import pytest
 import datetime
 from pathlib import Path
+# tests/conftest.py
+import sys
+import os
+
+# Get the path of the project root (the directory above 'tests')
+# and add it to the Python search path.
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 REPORTS_DIR = Path("artifacts")
 REPORTS_FILE = REPORTS_DIR / "reports.txt"
