@@ -1,5 +1,2 @@
-....                                                                     [100%]
-4 passed in 0.90s
-....                                                                     [100%]
-- generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
-4 passed in 0.78s
+.                                                                        [100%]
+1 passed in 0.61s
