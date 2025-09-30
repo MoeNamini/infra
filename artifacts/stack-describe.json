@@ -1,0 +1,55 @@
+{
+    "Stacks": [
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/0e38b830-9c6a-11f0-91bc-062c0a4f4f83",
+            "StackName": "s3-lambda-dynamo-stack",
+            "ChangeSetId": "arn:aws:cloudformation:eu-central-1:131471595295:changeSet/awscli-cloudformation-package-deploy-1759064197/f699ed52-e9e9-42e4-9061-5b7ef0386aa4",
+            "Description": "S3, Lambda, and DynamoDB stack with proper permissions",
+            "Parameters": [
+                {
+                    "ParameterKey": "BucketName",
+                    "ParameterValue": "lambdandynam-static-01-01123581321"
+                },
+                {
+                    "ParameterKey": "DynamoTableName",
+                    "ParameterValue": "dynamotable-static-01"
+                },
+                {
+                    "ParameterKey": "LambdaName",
+                    "ParameterValue": "lambda-static-01"
+                }
+            ],
+            "CreationTime": "2025-09-28T12:56:36.974000+00:00",
+            "LastUpdatedTime": "2025-09-28T12:56:43.047000+00:00",
+            "RollbackConfiguration": {},
+            "StackStatus": "CREATE_COMPLETE",
+            "DisableRollback": false,
+            "NotificationARNs": [],
+            "Capabilities": [
+                "CAPABILITY_NAMED_IAM"
+            ],
+            "Outputs": [
+                {
+                    "OutputKey": "BucketName",
+                    "OutputValue": "lambdandynam-static-01-01123581321",
+                    "Description": "Name of the S3 bucket"
+                },
+                {
+                    "OutputKey": "LambdaFunction",
+                    "OutputValue": "lambda-static-01",
+                    "Description": "Lambda function name"
+                },
+                {
+                    "OutputKey": "DynamoTable",
+                    "OutputValue": "dynamotable-static-01",
+                    "Description": "DynamoDB table name"
+                }
+            ],
+            "Tags": [],
+            "EnableTerminationProtection": false,
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        }
+    ]
+}
