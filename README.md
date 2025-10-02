@@ -8,4 +8,7 @@ Created the pre-push hook script and made it executable to automate the tests be
 
 Also created the ci.yml file in workflows to automate the test process using an Action in GitHub.
 [![CI](https://github.com/MoeNamini/infra/actions/workflows/ci.yml/badge.svg)](https://github.com/MoeNamini/infra/actions/workflows/ci.yml)
-
+SQS Processor test
+[![CI - Lambda Tests (unit + optional integration)](https://github.com/MoeNamini/infra/actions/workflows/ci-lambda-test.yml/badge.svg)](https://github.com/MoeNamini/infra/actions/workflows/ci-lambda-test.yml)
+Pre-sign URL generator 
+[![CI - Tests (unit + optional integration)](https://github.com/MoeNamini/infra/actions/workflows/ci-presign-tests.yml/badge.svg)](https://github.com/MoeNamini/infra/actions/workflows/ci-presign-tests.yml)
