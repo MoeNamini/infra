@@ -656,3 +656,21 @@ E           botocore.errorfactory.ResourceNotFoundException: An error occurred (
 [2025-10-04 20:41:07] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
 [2025-10-04 20:41:07] RESULT: ALL TESTS PASSED
 
+[2025-10-04 20:45:17] pre-push: running pytest...
+[2025-10-04 20:45:18] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-04 20:45:18] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-04 20:45:18] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-04 20:45:18] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-04 20:45:18] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-04 20:45:18] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-04 20:45:18] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-04 20:45:17 ===
+[2025-10-04 20:45:17] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-04 20:45:17] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-04 20:45:17] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-04 20:45:17] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-04 20:45:17] tests.test_sanity::test_sanity | PASS 
+[2025-10-04 20:45:17] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-04 20:45:17] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-04 20:45:17] RESULT: ALL TESTS PASSED
+
