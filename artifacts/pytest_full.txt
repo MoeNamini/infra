@@ -13,4 +13,4 @@ tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call PA
 tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip PASSED [100%]
 
 - generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
-============================== 7 passed in 1.05s ==============================
+============================== 7 passed in 1.04s ==============================
