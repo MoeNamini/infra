@@ -225,7 +225,7 @@ arn:aws:sns:eu-central-1:131471595295:lambda-alerts:e443465f-8422-43a0-8503-0a87
 If it was not your intention to subscribe, click here to unsubscribe.
 
 Command: 
-aws cloudwatch put-metric-alarm   --alarm-name "lambda-alerts-Errors"   --metric-name "Errors"   --namespace "AWS/Lambda"   --statistic Sum   --period 300   --threshold 1   --comparison-operator GreaterThanOrEqualToThreshold   --evaluation-periods 1   --dimensions Name=FunctionName,Value=lambda-static-01  --alarm-actions arn:aws:sns:eu-central-1:131471595295:lambda-alerts 
+- aws cloudwatch put-metric-alarm   --alarm-name "lambda-alerts-Errors"   --metric-name "Errors"   --namespace "AWS/Lambda"   --statistic Sum   --period 300   --threshold 1   --comparison-operator GreaterThanOrEqualToThreshold   --evaluation-periods 1   --dimensions Name=FunctionName,Value=lambda-static-01  --alarm-actions arn:aws:sns:eu-central-1:131471595295:lambda-alerts 
 
 ### Fake a faliure to check the SNS email subscription
 View this alarm in the AWS Management Console:
@@ -362,7 +362,6 @@ H --> I[PM verifies ACs]
 I --> J[Merge PR -> Deploy to main/staging]
 J --> K[Monitor via CloudWatch/SNS]
 F -- no --> L[Fix code and iterate]
-
 ```
 
 ```mermaid
