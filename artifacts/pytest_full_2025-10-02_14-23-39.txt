@@ -12,5 +12,5 @@ tests/test_sanity.py::test_sanity PASSED                                 [ 71%]
 tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call PASSED [ 85%]
 tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip PASSED [100%]
 
-- generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit.xml -
-============================== 7 passed in 1.05s ==============================
+- generated xml file: C:\Users\moham\OneDrive\Desktop\GitHub\infra\artifacts\junit_2025-10-02_14-23-39.xml -
+============================== 7 passed in 1.33s ==============================

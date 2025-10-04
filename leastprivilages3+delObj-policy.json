@@ -24,3 +24,13 @@
     }
   ]
 }
+aws cloudwatch put-metric-alarm \
+  --alarm-name "SQS-Processing-Backlog" \
+  --alarm-description "Alarm when message age exceeds 5 minutes (300s)." \
+  --metric-name ApproximateAgeOfOldestMessage \
+  --namespace AWS/SQS \
+  --statistic Maximum \
+  --dimensions Name=QueueName,Value="$QUEUE_NAME" \
+  --period 60 --evaluation-periods 1 --threshold 300 \
+  --comparison-operator GreaterThanThreshold \
+  --alarm-actions "$SNS_ARN"

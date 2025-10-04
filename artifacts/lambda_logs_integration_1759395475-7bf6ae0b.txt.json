@@ -1,0 +1,51 @@
+[
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395476554,
+    "message": "INIT_START Runtime Version: python:3.10.v93\tRuntime Version ARN: arn:aws:lambda:eu-central-1::runtime:361a97f6c2f30e77b8700bb72b99c3c64f5ee923acde2e3a5a09f67ed5eb35a7\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830226078113044791794261737722948448875233023557632"
+  },
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395477168,
+    "message": "START RequestId: 5d908254-7168-5ad0-8c1b-e30c31ae4b56 Version: $LATEST\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830239770770596689596870640653967854969197695533057"
+  },
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395477169,
+    "message": "Processing 1 messages from SQS\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830239793071341888127493782189686127617559201513474"
+  },
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395477169,
+    "message": "Processing: s3://lambdandynam-static-01-01123581321/integration/1759395475-7bf6ae0b.txt\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830239793071341888127493782189686127617559201513475"
+  },
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395477669,
+    "message": "Successfully stored: integration/1759395475-7bf6ae0b.txt\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830250943443941153439064550048822451798312191721476"
+  },
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395477670,
+    "message": "END RequestId: 5d908254-7168-5ad0-8c1b-e30c31ae4b56\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830250965744686351969687691584540724446673697701893"
+  },
+  {
+    "logStreamName": "2025/10/02/[$LATEST]6fd2c39f5dee40c1afa0e5954038260b",
+    "timestamp": 1759395477670,
+    "message": "REPORT RequestId: 5d908254-7168-5ad0-8c1b-e30c31ae4b56\tDuration: 501.30 ms\tBilled Duration: 1113 ms\tMemory Size: 128 MB\tMax Memory Used: 90 MB\tInit Duration: 611.01 ms\t\n",
+    "ingestionTime": 1759395477794,
+    "eventId": "39235830250965744686351969687691584540724446673697701894"
+  }
+]

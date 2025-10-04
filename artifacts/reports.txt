@@ -237,3 +237,422 @@ tests\test_presign_unit.py:23: KeyError
 
 [2025-09-29 13:35:12] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
 [2025-09-29 13:35:13] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-09-30 12:28:08] pre-push: running pytest...
+[2025-09-30 12:28:10] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-09-30 12:28:10] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-30 12:28:10] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-30 12:28:10] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-30 12:28:10] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+=== pytest run: 2025-09-30 12:28:08 ===
+[2025-09-30 12:28:08] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-09-30 12:28:08] tests.test_positive::test_upload_file_successful | PASS 
+[2025-09-30 12:28:08] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-09-30 12:28:08] tests.test_s3_upload::test_upload_file | PASS 
+[2025-09-30 12:28:08] tests.test_sanity::test_sanity | PASS 
+[2025-09-30 12:28:08] RESULT: ALL TESTS PASSED
+
+[2025-09-30 17:00:30] pre-push: running pytest...
+[2025-09-30 17:00:32] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-09-30 17:00:32] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-30 17:00:32] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-30 17:00:32] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-30 17:00:32] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+=== pytest run: 2025-09-30 17:00:30 ===
+[2025-09-30 17:00:30] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-09-30 17:00:30] tests.test_positive::test_upload_file_successful | PASS 
+[2025-09-30 17:00:30] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-09-30 17:00:30] tests.test_s3_upload::test_upload_file | PASS 
+[2025-09-30 17:00:30] tests.test_sanity::test_sanity | PASS 
+[2025-09-30 17:00:30] RESULT: ALL TESTS PASSED
+
+[2025-09-30 17:07:05] pre-push: running pytest...
+[2025-09-30 17:07:06] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-09-30 17:07:06] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-09-30 17:07:06] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-09-30 17:07:06] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-09-30 17:07:06] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+=== pytest run: 2025-09-30 17:07:05 ===
+[2025-09-30 17:07:05] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-09-30 17:07:05] tests.test_positive::test_upload_file_successful | PASS 
+[2025-09-30 17:07:05] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-09-30 17:07:05] tests.test_s3_upload::test_upload_file | PASS 
+[2025-09-30 17:07:05] tests.test_sanity::test_sanity | PASS 
+[2025-09-30 17:07:05] RESULT: ALL TESTS PASSED
+
+[2025-10-01 22:42:31] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | FAIL mock_ddb = <MagicMock name='dynamodb' id='1683254912976'>
+
+    @patch("scripts.sqs_processor.dynamodb")
+    def test_process_record_puts_item_on_first_call(mock_ddb):
+        table = MagicMock()
+        mock_ddb.Table.return_value = table
+        # simulate successful put
+        table.put_item.return_value = {}
+        body = json.dumps({"bucket":"b","key":"k"})
+>       ok = process_record(body)
+             ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_sqs_processor_unit.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\sqs_processor.py:23: in process_record
+    table.put_item(
+.venv\Lib\site-packages\boto3\resources\factory.py:581: in do_action
+    response = action(self, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\boto3\resources\action.py:88: in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\botocore\client.py:602: in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\botocore\context.py:123: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <botocore.client.DynamoDB object at 0x00000187EC65B590>
+operation_name = 'PutItem'
+api_params = {'ConditionExpression': 'attribute_not_exists(s3_key)', 'Item': {'bucket': {'S': 'b'}, 'content_type': {'NULL': True},...e_size': {'NULL': True}, 'processed_at': {'S': '2025-10-01T19:12:30.384567'}, ...}, 'TableName': 'processing-metadata'}
+
+    @with_current_context()
+    def _make_api_call(self, operation_name, api_params):
+        operation_model = self._service_model.operation_model(operation_name)
+        service_name = self._service_model.service_name
+        history_recorder.record(
+            'API_CALL',
+            {
+                'service': service_name,
+                'operation': operation_name,
+                'params': api_params,
+            },
+        )
+        if operation_model.deprecated:
+            logger.debug(
+                'Warning: %s.%s() is deprecated', service_name, operation_name
+            )
+        request_context = {
+            'client_region': self.meta.region_name,
+            'client_config': self.meta.config,
+            'has_streaming_input': operation_model.has_streaming_input,
+            'auth_type': operation_model.resolved_auth_type,
+            'unsigned_payload': operation_model.unsigned_payload,
+            'auth_options': self._service_model.metadata.get('auth'),
+        }
+    
+        api_params = self._emit_api_params(
+            api_params=api_params,
+            operation_model=operation_model,
+            context=request_context,
+        )
+        (
+            endpoint_url,
+            additional_headers,
+            properties,
+        ) = self._resolve_endpoint_ruleset(
+            operation_model, api_params, request_context
+        )
+        if properties:
+            # Pass arbitrary endpoint info with the Request
+            # for use during construction.
+            request_context['endpoint_properties'] = properties
+        request_dict = self._convert_to_request_dict(
+            api_params=api_params,
+            operation_model=operation_model,
+            endpoint_url=endpoint_url,
+            context=request_context,
+            headers=additional_headers,
+        )
+        resolve_checksum_context(request_dict, operation_model, api_params)
+    
+        service_id = self._service_model.service_id.hyphenize()
+        handler, event_response = self.meta.events.emit_until_response(
+            f'before-call.{service_id}.{operation_name}',
+            model=operation_model,
+            params=request_dict,
+            request_signer=self._request_signer,
+            context=request_context,
+        )
+    
+        if event_response is not None:
+            http, parsed_response = event_response
+        else:
+            maybe_compress_request(
+                self.meta.config, request_dict, operation_model
+            )
+            apply_request_checksum(request_dict)
+            http, parsed_response = self._make_request(
+                operation_model, request_dict, request_context
+            )
+    
+        self.meta.events.emit(
+            f'after-call.{service_id}.{operation_name}',
+            http_response=http,
+            parsed=parsed_response,
+            model=operation_model,
+            context=request_context,
+        )
+    
+        if http.status_code >= 300:
+            error_info = parsed_response.get("Error", {})
+            error_code = request_context.get(
+                'error_code_override'
+            ) or error_info.get("Code")
+            error_class = self.exceptions.from_code(error_code)
+>           raise error_class(parsed_response, operation_name)
+E           botocore.errorfactory.ResourceNotFoundException: An error occurred (ResourceNotFoundException) when calling the PutItem operation: Requested resource not found
+
+.venv\Lib\site-packages\botocore\client.py:1078: ResourceNotFoundException
+[2025-10-01 22:42:31] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | FAIL mock_ddb = <MagicMock name='dynamodb' id='1683317951760'>
+
+    @patch("scripts.sqs_processor.dynamodb")
+    def test_process_record_idempotent_skip(mock_ddb):
+        table = MagicMock()
+        mock_ddb.Table.return_value = table
+        # simulate conditional check failed
+        from botocore.exceptions import ClientError
+        error_response = {"Error": {"Code": "ConditionalCheckFailedException", "Message":"Exists"}}
+        table.put_item.side_effect = ClientError(error_response, "PutItem")
+        body = json.dumps({"bucket":"b","key":"k"})
+>       ok = process_record(body)
+             ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_sqs_processor_unit.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\sqs_processor.py:23: in process_record
+    table.put_item(
+.venv\Lib\site-packages\boto3\resources\factory.py:581: in do_action
+    response = action(self, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\boto3\resources\action.py:88: in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\botocore\client.py:602: in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\botocore\context.py:123: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <botocore.client.DynamoDB object at 0x00000187EC65B590>
+operation_name = 'PutItem'
+api_params = {'ConditionExpression': 'attribute_not_exists(s3_key)', 'Item': {'bucket': {'S': 'b'}, 'content_type': {'NULL': True},...e_size': {'NULL': True}, 'processed_at': {'S': '2025-10-01T19:12:31.073515'}, ...}, 'TableName': 'processing-metadata'}
+
+    @with_current_context()
+    def _make_api_call(self, operation_name, api_params):
+        operation_model = self._service_model.operation_model(operation_name)
+        service_name = self._service_model.service_name
+        history_recorder.record(
+            'API_CALL',
+            {
+                'service': service_name,
+                'operation': operation_name,
+                'params': api_params,
+            },
+        )
+        if operation_model.deprecated:
+            logger.debug(
+                'Warning: %s.%s() is deprecated', service_name, operation_name
+            )
+        request_context = {
+            'client_region': self.meta.region_name,
+            'client_config': self.meta.config,
+            'has_streaming_input': operation_model.has_streaming_input,
+            'auth_type': operation_model.resolved_auth_type,
+            'unsigned_payload': operation_model.unsigned_payload,
+            'auth_options': self._service_model.metadata.get('auth'),
+        }
+    
+        api_params = self._emit_api_params(
+            api_params=api_params,
+            operation_model=operation_model,
+            context=request_context,
+        )
+        (
+            endpoint_url,
+            additional_headers,
+            properties,
+        ) = self._resolve_endpoint_ruleset(
+            operation_model, api_params, request_context
+        )
+        if properties:
+            # Pass arbitrary endpoint info with the Request
+            # for use during construction.
+            request_context['endpoint_properties'] = properties
+        request_dict = self._convert_to_request_dict(
+            api_params=api_params,
+            operation_model=operation_model,
+            endpoint_url=endpoint_url,
+            context=request_context,
+            headers=additional_headers,
+        )
+        resolve_checksum_context(request_dict, operation_model, api_params)
+    
+        service_id = self._service_model.service_id.hyphenize()
+        handler, event_response = self.meta.events.emit_until_response(
+            f'before-call.{service_id}.{operation_name}',
+            model=operation_model,
+            params=request_dict,
+            request_signer=self._request_signer,
+            context=request_context,
+        )
+    
+        if event_response is not None:
+            http, parsed_response = event_response
+        else:
+            maybe_compress_request(
+                self.meta.config, request_dict, operation_model
+            )
+            apply_request_checksum(request_dict)
+            http, parsed_response = self._make_request(
+                operation_model, request_dict, request_context
+            )
+    
+        self.meta.events.emit(
+            f'after-call.{service_id}.{operation_name}',
+            http_response=http,
+            parsed=parsed_response,
+            model=operation_model,
+            context=request_context,
+        )
+    
+        if http.status_code >= 300:
+            error_info = parsed_response.get("Error", {})
+            error_code = request_context.get(
+                'error_code_override'
+            ) or error_info.get("Code")
+            error_class = self.exceptions.from_code(error_code)
+>           raise error_class(parsed_response, operation_name)
+E           botocore.errorfactory.ResourceNotFoundException: An error occurred (ResourceNotFoundException) when calling the PutItem operation: Requested resource not found
+
+.venv\Lib\site-packages\botocore\client.py:1078: ResourceNotFoundException
+[2025-10-01 22:47:02] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-01 22:47:02] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+[2025-10-01 22:49:57] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-01 22:49:57] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+[2025-10-02 12:28:01] tests/integration_test_sqs_pytestfriendly.py::test_end_to_end_sqs_pipeline | Dir: tests | PASS 
+[2025-10-02 12:32:15] pre-push: running pytest...
+[2025-10-02 12:32:16] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-02 12:32:16] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-02 12:32:16] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-02 12:32:16] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-02 12:32:16] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-02 12:32:16] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-02 12:32:16] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-02 12:32:15 ===
+[2025-10-02 12:32:15] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-02 12:32:15] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-02 12:32:15] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-02 12:32:15] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-02 12:32:15] tests.test_sanity::test_sanity | PASS 
+[2025-10-02 12:32:15] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-02 12:32:15] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-02 12:32:15] RESULT: ALL TESTS PASSED
+
+[2025-10-02 12:46:25] pre-push: running pytest...
+[2025-10-02 12:46:26] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-02 12:46:26] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-02 12:46:26] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-02 12:46:26] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-02 12:46:26] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-02 12:46:26] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-02 12:46:26] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-02 12:46:25 ===
+[2025-10-02 12:46:25] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-02 12:46:25] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-02 12:46:25] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-02 12:46:25] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-02 12:46:25] tests.test_sanity::test_sanity | PASS 
+[2025-10-02 12:46:25] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-02 12:46:25] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-02 12:46:25] RESULT: ALL TESTS PASSED
+
+[2025-10-02 12:53:47] pre-push: running pytest...
+[2025-10-02 12:53:48] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-02 12:53:48] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-02 12:53:48] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-02 12:53:49] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-02 12:53:49] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-02 12:53:49] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-02 12:53:49] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-02 12:53:47 ===
+[2025-10-02 12:53:47] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-02 12:53:47] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-02 12:53:47] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-02 12:53:47] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-02 12:53:47] tests.test_sanity::test_sanity | PASS 
+[2025-10-02 12:53:47] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-02 12:53:47] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-02 12:53:47] RESULT: ALL TESTS PASSED
+
+[2025-10-02 13:06:21] pre-push: running pytest...
+[2025-10-02 13:06:22] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-02 13:06:23] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-02 13:06:23] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-02 13:06:23] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-02 13:06:23] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-02 13:06:23] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-02 13:06:23] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-02 13:06:21 ===
+[2025-10-02 13:06:21] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-02 13:06:21] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-02 13:06:21] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-02 13:06:21] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-02 13:06:21] tests.test_sanity::test_sanity | PASS 
+[2025-10-02 13:06:21] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-02 13:06:21] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-02 13:06:21] RESULT: ALL TESTS PASSED
+
+[2025-10-02 14:23:40] post-merge: running pytest...
+[2025-10-02 14:23:41] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-02 14:23:41] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-02 14:23:41] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-02 14:23:41] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-02 14:23:41] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-02 14:23:41] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-02 14:23:41] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-02 14:23:42 ===
+[2025-10-02_14-23-39] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-02_14-23-39] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-02_14-23-39] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-02_14-23-39] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-02_14-23-39] tests.test_sanity::test_sanity | PASS 
+[2025-10-02_14-23-39] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-02_14-23-39] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-02 14:23:42] RESULT: ALL TESTS PASSED
+
+[2025-10-04 20:40:03] pre-push: running pytest...
+[2025-10-04 20:40:04] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-04 20:40:05] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-04 20:40:05] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-04 20:40:05] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-04 20:40:05] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-04 20:40:05] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-04 20:40:05] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-04 20:40:03 ===
+[2025-10-04 20:40:03] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-04 20:40:03] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-04 20:40:03] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-04 20:40:03] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-04 20:40:03] tests.test_sanity::test_sanity | PASS 
+[2025-10-04 20:40:03] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-04 20:40:03] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-04 20:40:03] RESULT: ALL TESTS PASSED
+
+[2025-10-04 20:41:07] pre-push: running pytest...
+[2025-10-04 20:41:08] tests/test_lambda_unit.py::test_handler_writes_ddb | Dir: tests | PASS 
+[2025-10-04 20:41:08] tests/test_positive.py::test_upload_file_successful | Dir: tests | PASS 
+[2025-10-04 20:41:08] tests/test_presign_unit.py::test_generate_presigned_put_calls_boto3_with_sse | Dir: tests | PASS 
+[2025-10-04 20:41:08] tests/test_s3_upload.py::test_upload_file | Dir: tests | PASS 
+[2025-10-04 20:41:08] tests/test_sanity.py::test_sanity | Dir: tests | PASS 
+[2025-10-04 20:41:08] tests/test_sqs_processor_unit.py::test_process_record_puts_item_on_first_call | Dir: tests | PASS 
+[2025-10-04 20:41:08] tests/test_sqs_processor_unit.py::test_process_record_idempotent_skip | Dir: tests | PASS 
+=== pytest run: 2025-10-04 20:41:07 ===
+[2025-10-04 20:41:07] tests.test_lambda_unit::test_handler_writes_ddb | PASS 
+[2025-10-04 20:41:07] tests.test_positive::test_upload_file_successful | PASS 
+[2025-10-04 20:41:07] tests.test_presign_unit::test_generate_presigned_put_calls_boto3_with_sse | PASS 
+[2025-10-04 20:41:07] tests.test_s3_upload::test_upload_file | PASS 
+[2025-10-04 20:41:07] tests.test_sanity::test_sanity | PASS 
+[2025-10-04 20:41:07] tests.test_sqs_processor_unit::test_process_record_puts_item_on_first_call | PASS 
+[2025-10-04 20:41:07] tests.test_sqs_processor_unit::test_process_record_idempotent_skip | PASS 
+[2025-10-04 20:41:07] RESULT: ALL TESTS PASSED
+

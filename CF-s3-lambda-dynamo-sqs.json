@@ -1,0 +1,666 @@
+[
+    {
+        "OutputKey": "BucketArn",
+        "OutputValue": "arn:aws:s3:::lambdandynam-static-01-01123581321",
+        "Description": "S3 bucket ARN"
+    },
+    {
+        "OutputKey": "BucketName",
+        "OutputValue": "lambdandynam-static-01-01123581321",
+        "Description": "S3 bucket name"
+    },
+    {
+        "OutputKey": "ProcessingDLQArn",
+        "OutputValue": "arn:aws:sqs:eu-central-1:131471595295:processing-dlq",
+        "Description": "SQS DLQ ARN"
+    },
+    {
+        "OutputKey": "LambdaExecutionRoleArn",
+        "OutputValue": "arn:aws:iam::131471595295:role/lambda-static-01-role",
+        "Description": "IAM role ARN for Lambda"
+    },
+    {
+        "OutputKey": "ProcessingQueueUrl",
+        "OutputValue": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue",
+        "Description": "SQS Processing queue URL"
+    },
+    {
+        "OutputKey": "DynamoTableName",
+        "OutputValue": "dynamotable-static-01",
+        "Description": "DynamoDB table name"
+    },
+    {
+        "OutputKey": "SqsProcessorLambdaArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:131471595295:function:sqs-processor-lambda",
+        "Description": "SQS processor Lambda ARN"
+    },
+    {
+        "OutputKey": "DynamoTableArn",
+        "OutputValue": "arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01",
+        "Description": "DynamoDB table ARN"
+    },
+    {
+        "OutputKey": "SqsProcessorLambdaName",
+        "OutputValue": "sqs-processor-lambda",
+        "Description": "SQS processor Lambda name"
+    },
+    {
+        "OutputKey": "ProcessingQueueArn",
+        "OutputValue": "arn:aws:sqs:eu-central-1:131471595295:processing-queue",
+        "Description": "SQS Processing queue ARN"
+    },
+    {
+        "OutputKey": "ProcessingDLQUrl",
+        "OutputValue": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-dlq",
+        "Description": "SQS DLQ URL"
+    }
+]
+{
+    "StackEvents": [
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "e0353a20-9ed6-11f0-bae5-06391f1f8b23",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-10-01T14:56:57.016000+00:00",
+            "ResourceStatus": "UPDATE_ROLLBACK_COMPLETE"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "S3PusherLambda-e707e165-8bda-471a-ac8c-37ef144c7211",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "S3PusherLambda",
+            "PhysicalResourceId": "lambda-static-01-s3-pusher",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:56.895000+00:00",
+            "ResourceStatus": "DELETE_COMPLETE"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "S3PusherLambda-81cfd0c4-01e8-409e-9014-4a013c66bd72",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "S3PusherLambda",
+            "PhysicalResourceId": "lambda-static-01-s3-pusher",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:51.369000+00:00",
+            "ResourceStatus": "DELETE_IN_PROGRESS"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "dc3e8480-9ed6-11f0-a568-02a6532c54dd",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-10-01T14:56:50.367000+00:00",
+            "ResourceStatus": "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsProcessorLambda-UPDATE_COMPLETE-2025-10-01T14:56:49.563Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "sqs-processor-lambda",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:49.563000+00:00",
+            "ResourceStatus": "UPDATE_COMPLETE",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"sqs-processor-lambda\",\"Runtime\":\"python3.10\",\"Timeout\":\"30\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"DDB_TABLE\":\"dynamotable-static-01\",\"REGION\":\"eu-central-1\"}},\"Code\":{\"ZipFile\":\"import os\\nimport json\\nimport boto3\\nfrom datetime import datetime\\n\\ns3 = boto3.client('s3')\\ndynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])\\ntable = dynamodb.Table(os.environ['DDB_TABLE'])\\n\\ndef handler(event, context):\\n    print(f\\\"Processing {len(event['Records'])} messages from SQS\\\")\\n    \\n    for record in event['Records']:\\n        try:\\n            # Parse S3 event from SQS message body\\n            message_body = json.loads(record['body'])\\n            \\n            # Handle S3 test events\\n            if 'Event' in message_body and message_body['Event'] == 's3:TestEvent':\\n                print(\\\"Received S3 test event, skipping...\\\")\\n                continue\\n            \\n            # Process S3 event records\\n            for s3_record in message_body.get('Records', []):\\n                bucket = s3_record['s3']['bucket']['name']\\n                key = s3_record['s3']['object']['key']\\n                event_time = s3_record['eventTime']\\n                \\n                print(f\\\"Processing: s3://{bucket}/{key}\\\")\\n                \\n                # Get object metadata\\n                response = s3.head_object(Bucket=bucket, Key=key)\\n                file_size = response['ContentLength']\\n                content_type = response.get('ContentType', 'unknown')\\n                \\n                # Store in DynamoDB with conditional write for idempotency\\n                try:\\n                    table.put_item(\\n                        Item={\\n                            's3_key': key,\\n                            'bucket': bucket,\\n                            'file_size': file_size,\\n                            'content_type': content_type,\\n                            'event_time': event_time,\\n                            'processed_at': datetime.utcnow().isoformat(),\\n                            'message_id': record['messageId']\\n                        },\\n                        ConditionExpression='attribute_not_exists(s3_key)'\\n                    )\\n                    print(f\\\"Successfully stored: {key}\\\")\\n                except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:\\n                    print(f\\\"Item already exists (idempotent): {key}\\\")\\n            \\n        except Exception as e:\\n            print(f\\\"ERROR processing record: {str(e)}\\\")\\n            raise  # Re-raise to send to DLQ after retries\\n    \\n    return {\\n        'statusCode': 200,\\n        'body': json.dumps(f'Processed {len(event[\\\"Records\\\"])} messages')\\n    }\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-UPDATE_COMPLETE-2025-10-01T14:56:48.978Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-10-01T14:56:48.978000+00:00",
+            "ResourceStatus": "UPDATE_COMPLETE",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:HeadObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-UPDATE_IN_PROGRESS-2025-10-01T14:56:28.700Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-10-01T14:56:28.700000+00:00",
+            "ResourceStatus": "UPDATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:HeadObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "cdedf780-9ed6-11f0-bc56-0207e0e6e3b3",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-10-01T14:56:26.341000+00:00",
+            "ResourceStatus": "UPDATE_ROLLBACK_IN_PROGRESS",
+            "ResourceStatusReason": "The following resource(s) failed to create: [S3PusherLambda]. The following resource(s) failed to update: [SqsProcessorLambda]. "
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsProcessorLambda-UPDATE_FAILED-2025-10-01T14:56:26.036Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "sqs-processor-lambda",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:26.036000+00:00",
+            "ResourceStatus": "UPDATE_FAILED",
+            "ResourceStatusReason": "Resource update cancelled",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"sqs-processor-lambda\",\"Runtime\":\"python3.10\",\"Timeout\":\"30\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"DDB_TABLE\":\"dynamotable-static-01\",\"REGION\":\"eu-central-1\"}},\"Code\":{\"ZipFile\":\"import os, json, boto3\\nfrom datetime import datetime\\ns3 = boto3.client('s3')\\ndynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])\\ntable = dynamodb.Table(os.environ['DDB_TABLE'])\\ndef handler(event, context):\\n    processed = 0\\n    for record in event['Records']:\\n        processed += 1\\n        try:\\n            # message expected to be the pusher JSON (bucket,key,size,contentType)\\n            body = json.loads(record['body'])\\n            bucket = body.get('bucket')\\n            key = body.get('key')\\n            size = body.get('size')\\n            content_type = body.get('contentType')\\n            # conditional write helps idempotency\\n            table.put_item(\\n                Item={\\n                    's3_key': key,\\n                    'bucket': bucket,\\n                    'file_size': size,\\n                    'content_type': content_type,\\n                    'processed_at': datetime.utcnow().isoformat(),\\n                    'message_id': record.get('messageId')\\n                },\\n                ConditionExpression='attribute_not_exists(s3_key)'\\n            )\\n        except Exception as e:\\n            # re-raise so the failing message can be retried / sent to DLQ\\n            print(\\\"ERROR processing record:\\\", str(e))\\n            raise\\n    return {\\\"statusCode\\\": 200, \\\"body\\\": json.dumps(f\\\"Processed {processed} messages\\\")}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "S3PusherLambda-CREATE_FAILED-2025-10-01T14:56:25.488Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "S3PusherLambda",
+            "PhysicalResourceId": "lambda-static-01-s3-pusher",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:25.488000+00:00",
+            "ResourceStatus": "CREATE_FAILED",
+            "ResourceStatusReason": "Resource handler returned message: \"Lambda was unable to configure your environment variables because the environment variables you have provided contains reserved keys that are currently not supported for modification. Reserved keys used in this request: AWS_REGION (Service: Lambda, Status Code: 400, Request ID: b70c475e-f7ae-4f11-8f14-92f58381f02b) (SDK Attempt Count: 1)\" (RequestToken: 97f5b966-2136-40a1-181c-828f6b63fd6f, HandlerErrorCode: InvalidRequest)",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"lambda-static-01-s3-pusher\",\"Runtime\":\"python3.10\",\"Timeout\":\"15\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"AWS_REGION\":\"eu-central-1\",\"QUEUE_URL\":\"https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue\"}},\"Code\":{\"ZipFile\":\"import json, os, logging, boto3\\nfrom botocore.exceptions import ClientError\\nlogger = logging.getLogger()\\nlogger.setLevel(logging.INFO)\\nREGION = os.getenv(\\\"AWS_REGION\\\", \\\"eu-central-1\\\")\\nQUEUE_URL = os.getenv(\\\"QUEUE_URL\\\")\\nsqs = boto3.client(\\\"sqs\\\", region_name=REGION)\\ns3 = boto3.client(\\\"s3\\\", region_name=REGION)\\ndef handler(event, context):\\n    results = []\\n    for rec in event.get(\\\"Records\\\", []):\\n        try:\\n            bucket = rec[\\\"s3\\\"][\\\"bucket\\\"][\\\"name\\\"]\\n            key = rec[\\\"s3\\\"][\\\"object\\\"][\\\"key\\\"]\\n            # retrieve metadata (head_object uses s3:GetObject permission)\\n            head = s3.head_object(Bucket=bucket, Key=key)\\n            size = head.get(\\\"ContentLength\\\")\\n            content_type = head.get(\\\"ContentType\\\")\\n            msg = {\\\"bucket\\\": bucket, \\\"key\\\": key, \\\"size\\\": size, \\\"contentType\\\": content_type}\\n            resp = sqs.send_message(QueueUrl=QUEUE_URL, MessageBody=json.dumps(msg))\\n            results.append({\\\"key\\\": key, \\\"messageId\\\": resp.get(\\\"MessageId\\\")})\\n        except ClientError as e:\\n            logger.exception(\\\"Error processing record\\\")\\n            results.append({\\\"key\\\": rec.get(\\\"s3\\\", {}).get(\\\"object\\\", {}).get(\\\"key\\\"), \\\"error\\\": str(e)})\\n    return {\\\"results\\\": results}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "S3PusherLambda-CREATE_IN_PROGRESS-2025-10-01T14:56:24.002Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "S3PusherLambda",
+            "PhysicalResourceId": "lambda-static-01-s3-pusher",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:24.002000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"lambda-static-01-s3-pusher\",\"Runtime\":\"python3.10\",\"Timeout\":\"15\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"AWS_REGION\":\"eu-central-1\",\"QUEUE_URL\":\"https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue\"}},\"Code\":{\"ZipFile\":\"import json, os, logging, boto3\\nfrom botocore.exceptions import ClientError\\nlogger = logging.getLogger()\\nlogger.setLevel(logging.INFO)\\nREGION = os.getenv(\\\"AWS_REGION\\\", \\\"eu-central-1\\\")\\nQUEUE_URL = os.getenv(\\\"QUEUE_URL\\\")\\nsqs = boto3.client(\\\"sqs\\\", region_name=REGION)\\ns3 = boto3.client(\\\"s3\\\", region_name=REGION)\\ndef handler(event, context):\\n    results = []\\n    for rec in event.get(\\\"Records\\\", []):\\n        try:\\n            bucket = rec[\\\"s3\\\"][\\\"bucket\\\"][\\\"name\\\"]\\n            key = rec[\\\"s3\\\"][\\\"object\\\"][\\\"key\\\"]\\n            # retrieve metadata (head_object uses s3:GetObject permission)\\n            head = s3.head_object(Bucket=bucket, Key=key)\\n            size = head.get(\\\"ContentLength\\\")\\n            content_type = head.get(\\\"ContentType\\\")\\n            msg = {\\\"bucket\\\": bucket, \\\"key\\\": key, \\\"size\\\": size, \\\"contentType\\\": content_type}\\n            resp = sqs.send_message(QueueUrl=QUEUE_URL, MessageBody=json.dumps(msg))\\n            results.append({\\\"key\\\": key, \\\"messageId\\\": resp.get(\\\"MessageId\\\")})\\n        except ClientError as e:\\n            logger.exception(\\\"Error processing record\\\")\\n            results.append({\\\"key\\\": rec.get(\\\"s3\\\", {}).get(\\\"object\\\", {}).get(\\\"key\\\"), \\\"error\\\": str(e)})\\n    return {\\\"results\\\": results}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsProcessorLambda-UPDATE_IN_PROGRESS-2025-10-01T14:56:23.483Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "sqs-processor-lambda",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:23.483000+00:00",
+            "ResourceStatus": "UPDATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"sqs-processor-lambda\",\"Runtime\":\"python3.10\",\"Timeout\":\"30\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"DDB_TABLE\":\"dynamotable-static-01\",\"REGION\":\"eu-central-1\"}},\"Code\":{\"ZipFile\":\"import os, json, boto3\\nfrom datetime import datetime\\ns3 = boto3.client('s3')\\ndynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])\\ntable = dynamodb.Table(os.environ['DDB_TABLE'])\\ndef handler(event, context):\\n    processed = 0\\n    for record in event['Records']:\\n        processed += 1\\n        try:\\n            # message expected to be the pusher JSON (bucket,key,size,contentType)\\n            body = json.loads(record['body'])\\n            bucket = body.get('bucket')\\n            key = body.get('key')\\n            size = body.get('size')\\n            content_type = body.get('contentType')\\n            # conditional write helps idempotency\\n            table.put_item(\\n                Item={\\n                    's3_key': key,\\n                    'bucket': bucket,\\n                    'file_size': size,\\n                    'content_type': content_type,\\n                    'processed_at': datetime.utcnow().isoformat(),\\n                    'message_id': record.get('messageId')\\n                },\\n                ConditionExpression='attribute_not_exists(s3_key)'\\n            )\\n        except Exception as e:\\n            # re-raise so the failing message can be retried / sent to DLQ\\n            print(\\\"ERROR processing record:\\\", str(e))\\n            raise\\n    return {\\\"statusCode\\\": 200, \\\"body\\\": json.dumps(f\\\"Processed {processed} messages\\\")}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "S3PusherLambda-CREATE_IN_PROGRESS-2025-10-01T14:56:22.963Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "S3PusherLambda",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-10-01T14:56:22.963000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"lambda-static-01-s3-pusher\",\"Runtime\":\"python3.10\",\"Timeout\":\"15\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"AWS_REGION\":\"eu-central-1\",\"QUEUE_URL\":\"https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue\"}},\"Code\":{\"ZipFile\":\"import json, os, logging, boto3\\nfrom botocore.exceptions import ClientError\\nlogger = logging.getLogger()\\nlogger.setLevel(logging.INFO)\\nREGION = os.getenv(\\\"AWS_REGION\\\", \\\"eu-central-1\\\")\\nQUEUE_URL = os.getenv(\\\"QUEUE_URL\\\")\\nsqs = boto3.client(\\\"sqs\\\", region_name=REGION)\\ns3 = boto3.client(\\\"s3\\\", region_name=REGION)\\ndef handler(event, context):\\n    results = []\\n    for rec in event.get(\\\"Records\\\", []):\\n        try:\\n            bucket = rec[\\\"s3\\\"][\\\"bucket\\\"][\\\"name\\\"]\\n            key = rec[\\\"s3\\\"][\\\"object\\\"][\\\"key\\\"]\\n            # retrieve metadata (head_object uses s3:GetObject permission)\\n            head = s3.head_object(Bucket=bucket, Key=key)\\n            size = head.get(\\\"ContentLength\\\")\\n            content_type = head.get(\\\"ContentType\\\")\\n            msg = {\\\"bucket\\\": bucket, \\\"key\\\": key, \\\"size\\\": size, \\\"contentType\\\": content_type}\\n            resp = sqs.send_message(QueueUrl=QUEUE_URL, MessageBody=json.dumps(msg))\\n            results.append({\\\"key\\\": key, \\\"messageId\\\": resp.get(\\\"MessageId\\\")})\\n        except ClientError as e:\\n            logger.exception(\\\"Error processing record\\\")\\n            results.append({\\\"key\\\": rec.get(\\\"s3\\\", {}).get(\\\"object\\\", {}).get(\\\"key\\\"), \\\"error\\\": str(e)})\\n    return {\\\"results\\\": results}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-UPDATE_COMPLETE-2025-10-01T14:56:21.911Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-10-01T14:56:21.911000+00:00",
+            "ResourceStatus": "UPDATE_COMPLETE",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:SendMessage\",\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-UPDATE_IN_PROGRESS-2025-10-01T14:56:03.820Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-10-01T14:56:03.820000+00:00",
+            "ResourceStatus": "UPDATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:SendMessage\",\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "be32b6f0-9ed6-11f0-8a24-02b93520519b",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-10-01T14:55:59.953000+00:00",
+            "ResourceStatus": "UPDATE_IN_PROGRESS",
+            "ResourceStatusReason": "User Initiated"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "a81da7b0-9e0b-11f0-bed1-0a1dda1ee90f",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-09-30T14:42:15.071000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsEventMapping-CREATE_COMPLETE-2025-09-30T14:42:12.572Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsEventMapping",
+            "PhysicalResourceId": "318ea308-5926-4535-9735-4c776a4e5761",
+            "ResourceType": "AWS::Lambda::EventSourceMapping",
+            "Timestamp": "2025-09-30T14:42:12.572000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"BatchSize\":\"5\",\"FunctionName\":\"arn:aws:lambda:eu-central-1:131471595295:function:sqs-processor-lambda\",\"Enabled\":\"true\",\"EventSourceArn\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"FunctionResponseTypes\":[\"ReportBatchItemFailures\"]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsEventMapping-CREATE_IN_PROGRESS-2025-09-30T14:41:50.971Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsEventMapping",
+            "PhysicalResourceId": "318ea308-5926-4535-9735-4c776a4e5761",
+            "ResourceType": "AWS::Lambda::EventSourceMapping",
+            "Timestamp": "2025-09-30T14:41:50.971000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"BatchSize\":\"5\",\"FunctionName\":\"arn:aws:lambda:eu-central-1:131471595295:function:sqs-processor-lambda\",\"Enabled\":\"true\",\"EventSourceArn\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"FunctionResponseTypes\":[\"ReportBatchItemFailures\"]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsEventMapping-CREATE_IN_PROGRESS-2025-09-30T14:41:49.632Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsEventMapping",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Lambda::EventSourceMapping",
+            "Timestamp": "2025-09-30T14:41:49.632000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"BatchSize\":\"5\",\"FunctionName\":\"arn:aws:lambda:eu-central-1:131471595295:function:sqs-processor-lambda\",\"Enabled\":\"true\",\"EventSourceArn\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"FunctionResponseTypes\":[\"ReportBatchItemFailures\"]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsProcessorLambda-CREATE_COMPLETE-2025-09-30T14:41:49.106Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "sqs-processor-lambda",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-09-30T14:41:49.106000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"sqs-processor-lambda\",\"Runtime\":\"python3.10\",\"Timeout\":\"30\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"DDB_TABLE\":\"dynamotable-static-01\",\"REGION\":\"eu-central-1\"}},\"Code\":{\"ZipFile\":\"import os\\nimport json\\nimport boto3\\nfrom datetime import datetime\\n\\ns3 = boto3.client('s3')\\ndynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])\\ntable = dynamodb.Table(os.environ['DDB_TABLE'])\\n\\ndef handler(event, context):\\n    print(f\\\"Processing {len(event['Records'])} messages from SQS\\\")\\n    \\n    for record in event['Records']:\\n        try:\\n            # Parse S3 event from SQS message body\\n            message_body = json.loads(record['body'])\\n            \\n            # Handle S3 test events\\n            if 'Event' in message_body and message_body['Event'] == 's3:TestEvent':\\n                print(\\\"Received S3 test event, skipping...\\\")\\n                continue\\n            \\n            # Process S3 event records\\n            for s3_record in message_body.get('Records', []):\\n                bucket = s3_record['s3']['bucket']['name']\\n                key = s3_record['s3']['object']['key']\\n                event_time = s3_record['eventTime']\\n                \\n                print(f\\\"Processing: s3://{bucket}/{key}\\\")\\n                \\n                # Get object metadata\\n                response = s3.head_object(Bucket=bucket, Key=key)\\n                file_size = response['ContentLength']\\n                content_type = response.get('ContentType', 'unknown')\\n                \\n                # Store in DynamoDB with conditional write for idempotency\\n                try:\\n                    table.put_item(\\n                        Item={\\n                            's3_key': key,\\n                            'bucket': bucket,\\n                            'file_size': file_size,\\n                            'content_type': content_type,\\n                            'event_time': event_time,\\n                            'processed_at': datetime.utcnow().isoformat(),\\n                            'message_id': record['messageId']\\n                        },\\n                        ConditionExpression='attribute_not_exists(s3_key)'\\n                    )\\n                    print(f\\\"Successfully stored: {key}\\\")\\n                except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:\\n                    print(f\\\"Item already exists (idempotent): {key}\\\")\\n            \\n        except Exception as e:\\n            print(f\\\"ERROR processing record: {str(e)}\\\")\\n            raise  # Re-raise to send to DLQ after retries\\n    \\n    return {\\n        'statusCode': 200,\\n        'body': json.dumps(f'Processed {len(event[\\\"Records\\\"])} messages')\\n    }\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsProcessorLambda-CREATE_IN_PROGRESS-2025-09-30T14:41:41.801Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "sqs-processor-lambda",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-09-30T14:41:41.801000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"sqs-processor-lambda\",\"Runtime\":\"python3.10\",\"Timeout\":\"30\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"DDB_TABLE\":\"dynamotable-static-01\",\"REGION\":\"eu-central-1\"}},\"Code\":{\"ZipFile\":\"import os\\nimport json\\nimport boto3\\nfrom datetime import datetime\\n\\ns3 = boto3.client('s3')\\ndynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])\\ntable = dynamodb.Table(os.environ['DDB_TABLE'])\\n\\ndef handler(event, context):\\n    print(f\\\"Processing {len(event['Records'])} messages from SQS\\\")\\n    \\n    for record in event['Records']:\\n        try:\\n            # Parse S3 event from SQS message body\\n            message_body = json.loads(record['body'])\\n            \\n            # Handle S3 test events\\n            if 'Event' in message_body and message_body['Event'] == 's3:TestEvent':\\n                print(\\\"Received S3 test event, skipping...\\\")\\n                continue\\n            \\n            # Process S3 event records\\n            for s3_record in message_body.get('Records', []):\\n                bucket = s3_record['s3']['bucket']['name']\\n                key = s3_record['s3']['object']['key']\\n                event_time = s3_record['eventTime']\\n                \\n                print(f\\\"Processing: s3://{bucket}/{key}\\\")\\n                \\n                # Get object metadata\\n                response = s3.head_object(Bucket=bucket, Key=key)\\n                file_size = response['ContentLength']\\n                content_type = response.get('ContentType', 'unknown')\\n                \\n                # Store in DynamoDB with conditional write for idempotency\\n                try:\\n                    table.put_item(\\n                        Item={\\n                            's3_key': key,\\n                            'bucket': bucket,\\n                            'file_size': file_size,\\n                            'content_type': content_type,\\n                            'event_time': event_time,\\n                            'processed_at': datetime.utcnow().isoformat(),\\n                            'message_id': record['messageId']\\n                        },\\n                        ConditionExpression='attribute_not_exists(s3_key)'\\n                    )\\n                    print(f\\\"Successfully stored: {key}\\\")\\n                except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:\\n                    print(f\\\"Item already exists (idempotent): {key}\\\")\\n            \\n        except Exception as e:\\n            print(f\\\"ERROR processing record: {str(e)}\\\")\\n            raise  # Re-raise to send to DLQ after retries\\n    \\n    return {\\n        'statusCode': 200,\\n        'body': json.dumps(f'Processed {len(event[\\\"Records\\\"])} messages')\\n    }\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "SqsProcessorLambda-CREATE_IN_PROGRESS-2025-09-30T14:41:40.675Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-09-30T14:41:40.675000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::131471595295:role/lambda-static-01-role\",\"FunctionName\":\"sqs-processor-lambda\",\"Runtime\":\"python3.10\",\"Timeout\":\"30\",\"Handler\":\"index.handler\",\"Environment\":{\"Variables\":{\"DDB_TABLE\":\"dynamotable-static-01\",\"REGION\":\"eu-central-1\"}},\"Code\":{\"ZipFile\":\"import os\\nimport json\\nimport boto3\\nfrom datetime import datetime\\n\\ns3 = boto3.client('s3')\\ndynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])\\ntable = dynamodb.Table(os.environ['DDB_TABLE'])\\n\\ndef handler(event, context):\\n    print(f\\\"Processing {len(event['Records'])} messages from SQS\\\")\\n    \\n    for record in event['Records']:\\n        try:\\n            # Parse S3 event from SQS message body\\n            message_body = json.loads(record['body'])\\n            \\n            # Handle S3 test events\\n            if 'Event' in message_body and message_body['Event'] == 's3:TestEvent':\\n                print(\\\"Received S3 test event, skipping...\\\")\\n                continue\\n            \\n            # Process S3 event records\\n            for s3_record in message_body.get('Records', []):\\n                bucket = s3_record['s3']['bucket']['name']\\n                key = s3_record['s3']['object']['key']\\n                event_time = s3_record['eventTime']\\n                \\n                print(f\\\"Processing: s3://{bucket}/{key}\\\")\\n                \\n                # Get object metadata\\n                response = s3.head_object(Bucket=bucket, Key=key)\\n                file_size = response['ContentLength']\\n                content_type = response.get('ContentType', 'unknown')\\n                \\n                # Store in DynamoDB with conditional write for idempotency\\n                try:\\n                    table.put_item(\\n                        Item={\\n                            's3_key': key,\\n                            'bucket': bucket,\\n                            'file_size': file_size,\\n                            'content_type': content_type,\\n                            'event_time': event_time,\\n                            'processed_at': datetime.utcnow().isoformat(),\\n                            'message_id': record['messageId']\\n                        },\\n                        ConditionExpression='attribute_not_exists(s3_key)'\\n                    )\\n                    print(f\\\"Successfully stored: {key}\\\")\\n                except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:\\n                    print(f\\\"Item already exists (idempotent): {key}\\\")\\n            \\n        except Exception as e:\\n            print(f\\\"ERROR processing record: {str(e)}\\\")\\n            raise  # Re-raise to send to DLQ after retries\\n    \\n    return {\\n        'statusCode': 200,\\n        'body': json.dumps(f'Processed {len(event[\\\"Records\\\"])} messages')\\n    }\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-CREATE_COMPLETE-2025-09-30T14:41:39.384Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-09-30T14:41:39.384000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:HeadObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingBucket-CREATE_COMPLETE-2025-09-30T14:41:36.646Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingBucket",
+            "PhysicalResourceId": "lambdandynam-static-01-01123581321",
+            "ResourceType": "AWS::S3::Bucket",
+            "Timestamp": "2025-09-30T14:41:36.646000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"BucketName\":\"lambdandynam-static-01-01123581321\",\"NotificationConfiguration\":{\"QueueConfigurations\":[{\"Event\":\"s3:ObjectCreated:*\",\"Queue\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\"}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingBucket-CREATE_IN_PROGRESS-2025-09-30T14:41:23.284Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingBucket",
+            "PhysicalResourceId": "lambdandynam-static-01-01123581321",
+            "ResourceType": "AWS::S3::Bucket",
+            "Timestamp": "2025-09-30T14:41:23.284000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"BucketName\":\"lambdandynam-static-01-01123581321\",\"NotificationConfiguration\":{\"QueueConfigurations\":[{\"Event\":\"s3:ObjectCreated:*\",\"Queue\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\"}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingBucket-CREATE_IN_PROGRESS-2025-09-30T14:41:22.141Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingBucket",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::S3::Bucket",
+            "Timestamp": "2025-09-30T14:41:22.141000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"BucketName\":\"lambdandynam-static-01-01123581321\",\"NotificationConfiguration\":{\"QueueConfigurations\":[{\"Event\":\"s3:ObjectCreated:*\",\"Queue\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\"}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-CREATE_IN_PROGRESS-2025-09-30T14:41:21.753Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-09-30T14:41:21.753000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:HeadObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueuePolicy-CREATE_COMPLETE-2025-09-30T14:41:21.704Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueuePolicy",
+            "PhysicalResourceId": "s3-lambda-dynamo-stack-ProcessingQueuePolicy-CUkNgMuVA9AO",
+            "ResourceType": "AWS::SQS::QueuePolicy",
+            "Timestamp": "2025-09-30T14:41:21.704000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Condition\":{\"ArnEquals\":{\"aws:SourceArn\":\"arn:aws:s3:::lambdandynam-static-01-01123581321\"}},\"Action\":\"sqs:SendMessage\",\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Sid\":\"AllowS3SendMessage\"}]},\"Queues\":[\"https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue\"]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaExecutionRole-CREATE_IN_PROGRESS-2025-09-30T14:41:20.817Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-09-30T14:41:20.817000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Path\":\"/\",\"RoleName\":\"lambda-static-01-role\",\"Policies\":[{\"PolicyName\":\"LambdaS3DynamoSQSPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:HeadObject\"],\"Resource\":\"arn:aws:s3:::lambdandynam-static-01-01123581321/*\",\"Effect\":\"Allow\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01\",\"Effect\":\"Allow\"},{\"Action\":[\"sqs:ReceiveMessage\",\"sqs:DeleteMessage\",\"sqs:GetQueueAttributes\",\"sqs:GetQueueUrl\"],\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\"},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Resource\":\"arn:aws:logs:*:*:*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueue-CREATE_COMPLETE-2025-09-30T14:41:19.868Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueue",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:41:19.868000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"RedrivePolicy\":{\"maxReceiveCount\":\"3\",\"deadLetterTargetArn\":\"arn:aws:sqs:eu-central-1:131471595295:processing-dlq\"},\"VisibilityTimeout\":\"30\",\"QueueName\":\"processing-queue\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingDLQ-CREATE_COMPLETE-2025-09-30T14:41:18.103Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingDLQ",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-dlq",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:41:18.103000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"MessageRetentionPeriod\":\"1209600\",\"QueueName\":\"processing-dlq\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaErrorMetricFilter-CREATE_COMPLETE-2025-09-30T14:40:59.354Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaErrorMetricFilter",
+            "PhysicalResourceId": "LambdaErrorMetricFilter-ujJBaxHDfTAa",
+            "ResourceType": "AWS::Logs::MetricFilter",
+            "Timestamp": "2025-09-30T14:40:59.354000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"MetricTransformations\":[{\"MetricName\":\"LambdaErrors\",\"MetricValue\":\"1\",\"MetricNamespace\":\"S3Processing\"}],\"FilterPattern\":\"\\\"ERROR\\\"\",\"LogGroupName\":\"/aws/lambda/sqs-processor-lambda\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingTable-CREATE_COMPLETE-2025-09-30T14:40:59.039Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingTable",
+            "PhysicalResourceId": "dynamotable-static-01",
+            "ResourceType": "AWS::DynamoDB::Table",
+            "Timestamp": "2025-09-30T14:40:59.039000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"TableName\":\"dynamotable-static-01\",\"AttributeDefinitions\":[{\"AttributeType\":\"S\",\"AttributeName\":\"s3_key\"}],\"BillingMode\":\"PAY_PER_REQUEST\",\"KeySchema\":[{\"KeyType\":\"HASH\",\"AttributeName\":\"s3_key\"}]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaErrorMetricFilter-CREATE_IN_PROGRESS-2025-09-30T14:40:57.764Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaErrorMetricFilter",
+            "PhysicalResourceId": "LambdaErrorMetricFilter-ujJBaxHDfTAa",
+            "ResourceType": "AWS::Logs::MetricFilter",
+            "Timestamp": "2025-09-30T14:40:57.764000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"MetricTransformations\":[{\"MetricName\":\"LambdaErrors\",\"MetricValue\":\"1\",\"MetricNamespace\":\"S3Processing\"}],\"FilterPattern\":\"\\\"ERROR\\\"\",\"LogGroupName\":\"/aws/lambda/sqs-processor-lambda\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaErrorMetricFilter-CREATE_IN_PROGRESS-2025-09-30T14:40:57.040Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaErrorMetricFilter",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Logs::MetricFilter",
+            "Timestamp": "2025-09-30T14:40:57.040000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"MetricTransformations\":[{\"MetricName\":\"LambdaErrors\",\"MetricValue\":\"1\",\"MetricNamespace\":\"S3Processing\"}],\"FilterPattern\":\"\\\"ERROR\\\"\",\"LogGroupName\":\"/aws/lambda/sqs-processor-lambda\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaLogGroup-CREATE_COMPLETE-2025-09-30T14:40:56.535Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaLogGroup",
+            "PhysicalResourceId": "/aws/lambda/sqs-processor-lambda",
+            "ResourceType": "AWS::Logs::LogGroup",
+            "Timestamp": "2025-09-30T14:40:56.535000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"RetentionInDays\":\"14\",\"LogGroupName\":\"/aws/lambda/sqs-processor-lambda\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueuePolicy-CREATE_IN_PROGRESS-2025-09-30T14:40:51.113Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueuePolicy",
+            "PhysicalResourceId": "s3-lambda-dynamo-stack-ProcessingQueuePolicy-CUkNgMuVA9AO",
+            "ResourceType": "AWS::SQS::QueuePolicy",
+            "Timestamp": "2025-09-30T14:40:51.113000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Condition\":{\"ArnEquals\":{\"aws:SourceArn\":\"arn:aws:s3:::lambdandynam-static-01-01123581321\"}},\"Action\":\"sqs:SendMessage\",\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Sid\":\"AllowS3SendMessage\"}]},\"Queues\":[\"https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue\"]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueuePolicy-CREATE_IN_PROGRESS-2025-09-30T14:40:50.442Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueuePolicy",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::SQS::QueuePolicy",
+            "Timestamp": "2025-09-30T14:40:50.442000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Condition\":{\"ArnEquals\":{\"aws:SourceArn\":\"arn:aws:s3:::lambdandynam-static-01-01123581321\"}},\"Action\":\"sqs:SendMessage\",\"Resource\":\"arn:aws:sqs:eu-central-1:131471595295:processing-queue\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Sid\":\"AllowS3SendMessage\"}]},\"Queues\":[\"https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue\"]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueue-3d9b3960-0381-4204-9a48-c123560d5a8b",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueue",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:40:49.966000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Eventual consistency check initiated",
+            "DetailedStatus": "CONFIGURATION_COMPLETE"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueue-CREATE_IN_PROGRESS-2025-09-30T14:40:49.421Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueue",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:40:49.421000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"RedrivePolicy\":{\"maxReceiveCount\":\"3\",\"deadLetterTargetArn\":\"arn:aws:sqs:eu-central-1:131471595295:processing-dlq\"},\"VisibilityTimeout\":\"30\",\"QueueName\":\"processing-queue\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaErrorsAlarm-CREATE_COMPLETE-2025-09-30T14:40:49.410Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaErrorsAlarm",
+            "PhysicalResourceId": "sqs-processor-lambda-Errors",
+            "ResourceType": "AWS::CloudWatch::Alarm",
+            "Timestamp": "2025-09-30T14:40:49.410000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"MetricName\":\"LambdaErrors\",\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"TreatMissingData\":\"notBreaching\",\"AlarmName\":\"sqs-processor-lambda-Errors\",\"AlarmDescription\":\"Alarm when Lambda has errors\",\"Statistic\":\"Sum\",\"Period\":\"300\",\"EvaluationPeriods\":\"1\",\"Namespace\":\"S3Processing\",\"Threshold\":\"1\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingQueue-CREATE_IN_PROGRESS-2025-09-30T14:40:48.647Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingQueue",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:40:48.647000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"RedrivePolicy\":{\"maxReceiveCount\":\"3\",\"deadLetterTargetArn\":\"arn:aws:sqs:eu-central-1:131471595295:processing-dlq\"},\"VisibilityTimeout\":\"30\",\"QueueName\":\"processing-queue\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingDLQ-d3139d8f-77b4-4a0f-aec1-e2d9901a7ba8",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingDLQ",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-dlq",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:40:48.188000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Eventual consistency check initiated",
+            "DetailedStatus": "CONFIGURATION_COMPLETE"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingTable-CREATE_IN_PROGRESS-2025-09-30T14:40:48.107Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingTable",
+            "PhysicalResourceId": "dynamotable-static-01",
+            "ResourceType": "AWS::DynamoDB::Table",
+            "Timestamp": "2025-09-30T14:40:48.107000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"TableName\":\"dynamotable-static-01\",\"AttributeDefinitions\":[{\"AttributeType\":\"S\",\"AttributeName\":\"s3_key\"}],\"BillingMode\":\"PAY_PER_REQUEST\",\"KeySchema\":[{\"KeyType\":\"HASH\",\"AttributeName\":\"s3_key\"}]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaErrorsAlarm-CREATE_IN_PROGRESS-2025-09-30T14:40:47.798Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaErrorsAlarm",
+            "PhysicalResourceId": "sqs-processor-lambda-Errors",
+            "ResourceType": "AWS::CloudWatch::Alarm",
+            "Timestamp": "2025-09-30T14:40:47.798000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"MetricName\":\"LambdaErrors\",\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"TreatMissingData\":\"notBreaching\",\"AlarmName\":\"sqs-processor-lambda-Errors\",\"AlarmDescription\":\"Alarm when Lambda has errors\",\"Statistic\":\"Sum\",\"Period\":\"300\",\"EvaluationPeriods\":\"1\",\"Namespace\":\"S3Processing\",\"Threshold\":\"1\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaLogGroup-CREATE_IN_PROGRESS-2025-09-30T14:40:47.744Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaLogGroup",
+            "PhysicalResourceId": "/aws/lambda/sqs-processor-lambda",
+            "ResourceType": "AWS::Logs::LogGroup",
+            "Timestamp": "2025-09-30T14:40:47.744000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"RetentionInDays\":\"14\",\"LogGroupName\":\"/aws/lambda/sqs-processor-lambda\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingDLQ-CREATE_IN_PROGRESS-2025-09-30T14:40:47.695Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingDLQ",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-dlq",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:40:47.695000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"MessageRetentionPeriod\":\"1209600\",\"QueueName\":\"processing-dlq\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaLogGroup-CREATE_IN_PROGRESS-2025-09-30T14:40:47.052Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaLogGroup",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Logs::LogGroup",
+            "Timestamp": "2025-09-30T14:40:47.052000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"RetentionInDays\":\"14\",\"LogGroupName\":\"/aws/lambda/sqs-processor-lambda\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingTable-CREATE_IN_PROGRESS-2025-09-30T14:40:47.021Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingTable",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::DynamoDB::Table",
+            "Timestamp": "2025-09-30T14:40:47.021000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"TableName\":\"dynamotable-static-01\",\"AttributeDefinitions\":[{\"AttributeType\":\"S\",\"AttributeName\":\"s3_key\"}],\"BillingMode\":\"PAY_PER_REQUEST\",\"KeySchema\":[{\"KeyType\":\"HASH\",\"AttributeName\":\"s3_key\"}]}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "LambdaErrorsAlarm-CREATE_IN_PROGRESS-2025-09-30T14:40:47.002Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "LambdaErrorsAlarm",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::CloudWatch::Alarm",
+            "Timestamp": "2025-09-30T14:40:47.002000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"MetricName\":\"LambdaErrors\",\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"TreatMissingData\":\"notBreaching\",\"AlarmName\":\"sqs-processor-lambda-Errors\",\"AlarmDescription\":\"Alarm when Lambda has errors\",\"Statistic\":\"Sum\",\"Period\":\"300\",\"EvaluationPeriods\":\"1\",\"Namespace\":\"S3Processing\",\"Threshold\":\"1\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "ProcessingDLQ-CREATE_IN_PROGRESS-2025-09-30T14:40:46.973Z",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "ProcessingDLQ",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:40:46.973000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"MessageRetentionPeriod\":\"1209600\",\"QueueName\":\"processing-dlq\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "72310750-9e0b-11f0-b547-02ad30c89bdd",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-09-30T14:40:44.592000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "User Initiated"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "EventId": "6ea91910-9e0b-11f0-8138-0ad981efe0b1",
+            "StackName": "s3-lambda-dynamo-stack",
+            "LogicalResourceId": "s3-lambda-dynamo-stack",
+            "PhysicalResourceId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-09-30T14:40:38.774000+00:00",
+            "ResourceStatus": "REVIEW_IN_PROGRESS",
+            "ResourceStatusReason": "User Initiated"
+        }
+    ]
+}
