@@ -1,0 +1,23 @@
+{
+  "event_time": {
+    "S": "2025-10-02T08:57:55.295Z"
+  },
+  "processed_at": {
+    "S": "2025-10-02T08:57:57.470183"
+  },
+  "content_type": {
+    "S": "binary/octet-stream"
+  },
+  "file_size": {
+    "N": "23"
+  },
+  "message_id": {
+    "S": "d31bd8ec-5a02-4869-9673-e5701e7e2059"
+  },
+  "bucket": {
+    "S": "lambdandynam-static-01-01123581321"
+  },
+  "s3_key": {
+    "S": "integration/1759395475-7bf6ae0b.txt"
+  }
+}
