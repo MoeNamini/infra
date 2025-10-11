@@ -2,34 +2,115 @@
 # Day 05
 
 
-## Day 5 workflow diagram 
+## Day 5 workflow 
+
+The Workflow Defined:
+Ingestion (S3): Files are dropped into the ProcessingBucket.
+
+Enrichment (S3 → Lambda → SQS): The S3 object creation event triggers the S3PusherLambda.
+
+The S3PusherLambda executes, reads the S3 event, performs a quick s3.head_object to grab file metadata (size, content type, etc.), and sends a new, enriched message into the ProcessingQueue.
+
+Processing Queue (SQS): The ProcessingQueue holds the work. It is configured with a ProcessingDLQ to catch any messages that fail processing (by using the RedrivePolicy after 3 retries).
+
+Consumption (Lambda): The SqsProcessorLambda is configured with an SqsEventMapping to constantly poll the SQS queue, pulling messages in batches of 5 for processing.
+
+Persistence (DynamoDB): The SqsProcessorLambda takes the metadata from the message and persists it into the ProcessingTable (DynamoDB) using conditional writes for idempotency.
+
+Monitoring (CloudWatch): The template includes a LambdaErrorMetricFilter and LambdaErrorsAlarm to automatically watch for errors in the logs and trigger an alert if the processor fails.
+
+Alerting (SNS): CloudWatch Alarms send notifications to SNS topics:
+
+LambdaErrorsAlarm → sqs-lambda-daynamo-alerts (notifies on Lambda processing errors)
+DLQHasMessagesAlarm → processing-dlq-alerts (notifies when messages enter the DLQ, indicating persistent failures)
+
+Distributed Tracing (X-Ray): AWS X-Ray traces requests through the entire pipeline (S3 → Lambda → SQS → Lambda → DynamoDB), providing visibility into latency, errors, and bottlenecks.
+
+### Note about the workflow (dual path)
+
+Why S3PusherLambda May Be Redundant (only in this case)
+In this architecture, the S3PusherLambda performs a head_object call to fetch file metadata (size, content-type) and forwards it to SQS. However, the downstream SqsProcessorLambda already calls head_object again to fetch the same metadata before writing to DynamoDB.
+Result: The pusher Lambda adds cost and latency without providing value in the basic use case.
+When to Keep the Pusher Lambda:
+
+File validation: Reject invalid file types before queuing (e.g., only allow images)
+Pre-processing: Extract metadata that's expensive to compute (EXIF data, video duration)
+Routing: Send different file types to different queues
+Security: Virus scanning, PII detection before processing
+Deduplication: Check if file already processed via hash lookup
+
+When to Remove It:
+
+Simple metadata logging (current implementation)
+All files are trusted/valid
+Cost optimization is a priority
+
+Recommendation: For this simple workflow, use direct S3 → SQS → Lambda and remove the pusher Lambda unless you need validation or advanced pre-processing.
+
+### Mermaid Diagram
 ```mermaid
-graph TD
-    subgraph "Data Processing Pipeline"
-        direction TB
-        A[fa:fa-user User] -- Uploads File --> B(S3 Bucket);
-        B -- S3 Event Notification --> C[fa:fa-amazon SQS Queue];
-        C -- Consumes Messages --> D{fa:fa-server Lambda Processor};
-        D -- On Success: Writes Data --> E[fa:fa-database DynamoDB Table];
-        D -- On Repeated Failures --> F[fa:fa-amazon SQS Dead-Letter Queue];
+graph TB
+    subgraph Ingestion["Data Ingestion"]
+        S3["S3 Bucket<br/>ProcessingBucket<br/><i>File uploads trigger s3:ObjectCreated:*</i>"]
     end
 
-    subgraph "Monitoring & Observability"
-        direction TB
-        G[fa:fa-chart-line CloudWatch];
-        H[fa:fa-bug AWS X-Ray];
-        
-        C -.-> |Metrics| G;
-        D -.-> |Metrics, Logs, Traces| G;
-        F -.-> |DLQ Depth Metric| G;
-        
-        G -- Triggers Alarm On Threshold --> I(fa:fa-bell SNS Notification for Alerting);
-        
-        H -- Provides End-to-End Trace --> D;
+    subgraph Enrichment["Enrichment Layer"]
+        Pusher["Lambda: S3PusherLambda<br/><i>Calls s3.head_object<br/>Enriches with size & content-type<br/>Forwards to SQS</i>"]
     end
 
-    style F fill:#ffcccc,stroke:#c00,stroke-width:2px;
-    style I fill:#fff0b3,stroke:#333,stroke-width:2px;
+    subgraph Queue["Message Queue"]
+        SQS["SQS Queue<br/>ProcessingQueue<br/><i>Buffers messages, retry logic<br/>VisibilityTimeout: 30s</i>"]
+        DLQ["Dead Letter Queue<br/>ProcessingDLQ<br/><i>Failed messages after 3 retries<br/>Retention: 14 days</i>"]
+    end
+
+    subgraph Processing["Processing Layer"]
+        Processor["Lambda: SqsProcessorLambda<br/><i>Polls SQS in batches of 5<br/>Writes to DynamoDB<br/>Idempotent via ConditionExpression</i>"]
+    end
+
+    subgraph Persistence["Data Persistence"]
+        DDB["DynamoDB Table<br/>ProcessingTable<br/><i>Partition key: s3_key<br/>Stores metadata</i>"]
+    end
+
+    subgraph Monitoring["Monitoring & Observability"]
+        CW["CloudWatch Logs<br/><i>Lambda execution logs<br/>Retention: 14 days</i>"]
+        Filter["Metric Filter<br/><i>Pattern: ERROR<br/>→ LambdaErrors metric</i>"]
+        LambdaAlarm["CloudWatch Alarm<br/>LambdaErrorsAlarm<br/><i>Threshold >= 1 in 5 min</i>"]
+        DLQAlarm["CloudWatch Alarm<br/>DLQHasMessagesAlarm<br/><i>DLQ message count > 0</i>"]
+        XRay["AWS X-Ray<br/><i>Distributed traces<br/>Service map<br/>Latency analysis</i>"]
+    end
+
+    subgraph Alerting["Alerting & Notifications"]
+        SNS1["SNS Topic<br/>sqs-lambda-daynamo-alerts<br/><i>Lambda error notifications<br/>Email/SMS subscribers</i>"]
+        SNS2["SNS Topic<br/>processing-dlq-alerts<br/><i>DLQ message notifications<br/>Email/SMS subscribers</i>"]
+    end
+
+    S3 -->|"S3 Event Notification<br/>Lambda trigger"| Pusher
+    S3 -.->|"OPTIONAL: Direct SQS<br/>(dual path - consider removing)"| SQS
+    Pusher -->|"Enriched JSON message<br/>{bucket, key, size, contentType}"| SQS
+    SQS -->|"Redrive after 3 failures"| DLQ
+    SQS -->|"Event Source Mapping<br/>BatchSize: 5"| Processor
+    Processor -->|"put_item with<br/>conditional write"| DDB
+    Processor -->|"Execution logs"| CW
+    Processor -.->|"Trace segments<br/>S3/SQS/DDB calls"| XRay
+    CW -->|"Filter ERROR pattern"| Filter
+    Filter -->|"Publish metric"| LambdaAlarm
+    DLQ -.->|"ApproximateNumberOfMessages<br/>visible metric"| DLQAlarm
+    LambdaAlarm -->|"Alarm state: ALARM<br/>Publish notification"| SNS1
+    DLQAlarm -->|"Alarm state: ALARM<br/>Publish notification"| SNS2
+    SNS1 -.->|"Email/SMS"| Users["Subscribers<br/><i>Ops team, developers</i>"]
+    SNS2 -.->|"Email/SMS"| Users
+
+    style S3 fill:#FF9900
+    style Pusher fill:#FF9900
+    style SQS fill:#FF4F8B
+    style DLQ fill:#D13212
+    style Processor fill:#FF9900
+    style DDB fill:#4053D6
+    style LambdaAlarm fill:#D13212
+    style DLQAlarm fill:#D13212
+    style SNS1 fill:#FF6B6B
+    style SNS2 fill:#FF6B6B
+    style XRay fill:#9D27B0
 ```
 
 
