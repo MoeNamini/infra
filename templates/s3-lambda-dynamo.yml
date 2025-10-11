@@ -1,9 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: >
   S3 -> Lambda pusher -> SQS -> SQS Processor Lambda -> DynamoDB pipeline
-  (includes DLQ, queue policy, Lambda permissions, CloudWatch metric filter + alarm)
+  (includes DLQ, queue policy, Lambda permissions, CloudWatch alarms, X-Ray tracing)
 
-# ## Parameters: user-supplied values (bucket names, lambda base name, table name) ##
 Parameters:
   BucketName:
     Type: String
@@ -30,10 +29,9 @@ Parameters:
     Type: Number
     Default: 30
 
-# ## Resources: main infra components ## 
 Resources:
 
-  # ## DynamoDB table that stores metadata for processed S3 objects ## 
+  # DynamoDB table
   ProcessingTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -46,15 +44,14 @@ Resources:
         - AttributeName: s3_key
           KeyType: HASH
 
-  # ## CloudWatch Log Group for the processor Lambda (keeps logs and retention) ## 
+  # CloudWatch Log Group
   LambdaLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
       LogGroupName: !Sub '/aws/lambda/${SqsProcessorLambdaName}'
       RetentionInDays: 14
 
-  # ## IAM role for Lambdas (execution role reused by pusher & processor) ##
-  # - Note: we grant s3:GetObject (covers HeadObject), sqs:SendMessage for pusher, and sqs:ReceiveMessage for consumer
+  # IAM role for Lambdas
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -72,21 +69,16 @@ Resources:
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
-              # S3 read access (s3:GetObject authorizes both GetObject and HeadObject SDK calls)
               - Effect: Allow
                 Action:
                   - s3:GetObject
                 Resource: !Sub 'arn:aws:s3:::${BucketName}/*'
-
-              # DynamoDB access used by processor Lambda
               - Effect: Allow
                 Action:
                   - dynamodb:PutItem
                   - dynamodb:UpdateItem
                   - dynamodb:GetItem
                 Resource: !GetAtt ProcessingTable.Arn
-
-              # SQS permissions: both sender (pusher) and consumer (processor)
               - Effect: Allow
                 Action:
                   - sqs:SendMessage
@@ -95,23 +87,26 @@ Resources:
                   - sqs:GetQueueAttributes
                   - sqs:GetQueueUrl
                 Resource: !GetAtt ProcessingQueue.Arn
-
-              # CloudWatch Logs
               - Effect: Allow
                 Action:
                   - logs:CreateLogGroup
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Resource: 'arn:aws:logs:*:*:*'
+              - Effect: Allow
+                Action:
+                  - xray:PutTraceSegments
+                  - xray:PutTelemetryRecords
+                Resource: '*'
 
-  # ## SQS Dead-Letter Queue (DLQ) for failed messages from processing queue ## 
+  # SQS Dead-Letter Queue
   ProcessingDLQ:
     Type: AWS::SQS::Queue
     Properties:
       QueueName: !Ref ProcessingDLQName
-      MessageRetentionPeriod: 1209600   # 14 days
+      MessageRetentionPeriod: 1209600
 
-  # ## Main SQS processing queue ## 
+  # Main SQS Queue
   ProcessingQueue:
     Type: AWS::SQS::Queue
     Properties:
@@ -121,56 +116,33 @@ Resources:
         deadLetterTargetArn: !GetAtt ProcessingDLQ.Arn
         maxReceiveCount: 3
 
-  # ## SQS Queue Policy to allow S3 to send messages to the queue (scoped to the bucket) ## 
-  ProcessingQueuePolicy:
-    Type: AWS::SQS::QueuePolicy
-    Properties:
-      Queues:
-        - !Ref ProcessingQueue
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Sid: AllowS3SendMessage
-            Effect: Allow
-            Principal:
-              Service: s3.amazonaws.com
-            Action: sqs:SendMessage
-            Resource: !GetAtt ProcessingQueue.Arn
-            Condition:
-              ArnEquals:
-                aws:SourceArn: !Sub 'arn:aws:s3:::${BucketName}'
-
-  # ## Lambda: S3 Pusher (triggered by S3 notifications) ##
-  # Purpose: enrich S3 event (head object to get metadata) and send JSON message into SQS
+  # Lambda: S3 Pusher
   S3PusherLambda:
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: !Sub "${LambdaName}-s3-pusher"
-      Handler: index.handler                # inline code defines def handler(...)
+      Handler: index.handler
       Runtime: python3.10
       Role: !GetAtt LambdaExecutionRole.Arn
       Timeout: 15
       Environment:
         Variables:
-          QUEUE_URL: !Ref ProcessingQueue    # !Ref returns the SQS queue URL
-          AWS_REGION: !Ref "AWS::Region"
+          QUEUE_URL: !Ref ProcessingQueue
       Code:
         ZipFile: |
           import json, os, logging, boto3
           from botocore.exceptions import ClientError
           logger = logging.getLogger()
           logger.setLevel(logging.INFO)
-          REGION = os.getenv("AWS_REGION", "eu-central-1")
           QUEUE_URL = os.getenv("QUEUE_URL")
-          sqs = boto3.client("sqs", region_name=REGION)
-          s3 = boto3.client("s3", region_name=REGION)
+          sqs = boto3.client("sqs")
+          s3 = boto3.client("s3")
           def handler(event, context):
               results = []
               for rec in event.get("Records", []):
                   try:
                       bucket = rec["s3"]["bucket"]["name"]
                       key = rec["s3"]["object"]["key"]
-                      # retrieve metadata (head_object uses s3:GetObject permission)
                       head = s3.head_object(Bucket=bucket, Key=key)
                       size = head.get("ContentLength")
                       content_type = head.get("ContentType")
@@ -182,7 +154,7 @@ Resources:
                       results.append({"key": rec.get("s3", {}).get("object", {}).get("key"), "error": str(e)})
               return {"results": results}
 
-  # ## Permission: allow S3 to invoke the pusher Lambda (required before setting bucket notifications) ## 
+  # Permission for S3 to invoke Lambda
   S3PusherLambdaInvokePermission:
     Type: AWS::Lambda::Permission
     Properties:
@@ -191,38 +163,42 @@ Resources:
       Principal: s3.amazonaws.com
       SourceArn: !Sub 'arn:aws:s3:::${BucketName}'
 
-  # ## Lambda: SQS Processor (consumes SQS messages and writes to DynamoDB) ##
+  # Lambda: SQS Processor (with X-Ray but WITHOUT X-Ray SDK - can't use in inline code)
   SqsProcessorLambda:
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: !Ref SqsProcessorLambdaName
-      Handler: index.handler                # inline code defines def handler(...)
+      Handler: index.handler
       Runtime: python3.10
       Role: !GetAtt LambdaExecutionRole.Arn
       Timeout: !Ref LambdaTimeoutSeconds
+      TracingConfig:
+        Mode: Active
       Environment:
         Variables:
           DDB_TABLE: !Ref DynamoTableName
-          REGION: !Ref "AWS::Region"
       Code:
         ZipFile: |
           import os, json, boto3
           from datetime import datetime
+          
+          # X-Ray SDK removed - TracingConfig: Active still traces boto3 calls automatically
+          
           s3 = boto3.client('s3')
-          dynamodb = boto3.resource('dynamodb', region_name=os.environ['REGION'])
+          dynamodb = boto3.resource('dynamodb')
           table = dynamodb.Table(os.environ['DDB_TABLE'])
+          
           def handler(event, context):
               processed = 0
               for record in event['Records']:
                   processed += 1
                   try:
-                      # message expected to be the pusher JSON (bucket,key,size,contentType)
                       body = json.loads(record['body'])
                       bucket = body.get('bucket')
                       key = body.get('key')
                       size = body.get('size')
                       content_type = body.get('contentType')
-                      # conditional write helps idempotency
+                      
                       table.put_item(
                           Item={
                               's3_key': key,
@@ -235,12 +211,11 @@ Resources:
                           ConditionExpression='attribute_not_exists(s3_key)'
                       )
                   except Exception as e:
-                      # re-raise so the failing message can be retried / sent to DLQ
                       print("ERROR processing record:", str(e))
                       raise
               return {"statusCode": 200, "body": json.dumps(f"Processed {processed} messages")}
 
-  # ## Event Source Mapping: connect SQS -> SqsProcessorLambda (Lambda polls SQS) ##
+  # Event Source Mapping
   SqsEventMapping:
     Type: AWS::Lambda::EventSourceMapping
     Properties:
@@ -251,12 +226,10 @@ Resources:
       FunctionResponseTypes:
         - ReportBatchItemFailures
 
-  # ## S3 Bucket with merged NotificationConfiguration (both Lambda and SQS entries possible) ##
-  # Note: depends on permission that allows S3 to invoke Lambda; ensure dependsOn is list
+  # S3 Bucket - ONLY Lambda notification (no direct SQS)
   ProcessingBucket:
     Type: AWS::S3::Bucket
     DependsOn:
-      - ProcessingQueuePolicy
       - S3PusherLambdaInvokePermission
     Properties:
       BucketName: !Ref BucketName
@@ -264,84 +237,98 @@ Resources:
         LambdaConfigurations:
           - Event: s3:ObjectCreated:*
             Function: !GetAtt S3PusherLambda.Arn
-        QueueConfigurations:
-          - Event: s3:ObjectCreated:*
-            Queue: !GetAtt ProcessingQueue.Arn
 
-  # ## CloudWatch Metric Filter to count 'ERROR' occurrences from Lambda log group ##
-  LambdaErrorMetricFilter:
-    Type: AWS::Logs::MetricFilter
+  # SNS Topics
+  LambdaErrorTopic:
+    Type: AWS::SNS::Topic
     Properties:
-      LogGroupName: !Ref LambdaLogGroup
-      FilterPattern: '"ERROR"'
-      MetricTransformations:
-        - MetricNamespace: S3Processing
-          MetricName: LambdaErrors
-          MetricValue: '1'
+      TopicName: sqs-lambda-daynamo-alerts
 
-  # ## CloudWatch Alarm triggered when LambdaErrors metric >= 1 within a 5-minute window ##
-  LambdaErrorsAlarm:
+  DlqAlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: processing-dlq-alerts
+
+  # CloudWatch Alarm for Lambda Errors
+  SqsProcessorLambdaErrorAlarm:
     Type: AWS::CloudWatch::Alarm
     Properties:
-      AlarmName: !Sub '${SqsProcessorLambdaName}-Errors'
-      AlarmDescription: 'Alarm when Lambda has errors'
-      MetricName: LambdaErrors
-      Namespace: S3Processing
+      AlarmName: !Sub '${LambdaName}-errors'
+      AlarmDescription: "Alarm for SQS Processor Lambda errors"
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref SqsProcessorLambda
       Statistic: Sum
       Period: 300
       EvaluationPeriods: 1
       Threshold: 1
       ComparisonOperator: GreaterThanOrEqualToThreshold
       TreatMissingData: notBreaching
+      AlarmActions:
+        - !Ref LambdaErrorTopic
 
-# ## Outputs: handy values you can use after deployment (queue URL, Lambda ARNs, etc.) ##
+  # CloudWatch Alarm for DLQ Depth
+  DlqDepthAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${LambdaName}-dlq-depth'
+      AlarmDescription: "Alarm for messages appearing in the Dead-Letter Queue"
+      Namespace: AWS/SQS
+      MetricName: ApproximateNumberOfMessagesVisible
+      Dimensions:
+        - Name: QueueName
+          Value: !GetAtt ProcessingDLQ.QueueName
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions:
+        - !Ref DlqAlertTopic
+
 Outputs:
   BucketName:
     Description: 'S3 bucket name'
     Value: !Ref ProcessingBucket
-
   BucketArn:
     Description: 'S3 bucket ARN'
     Value: !GetAtt ProcessingBucket.Arn
-
   ProcessingQueueUrl:
     Description: 'SQS processing queue URL'
     Value: !Ref ProcessingQueue
-
   ProcessingQueueArn:
     Description: 'SQS processing queue ARN'
     Value: !GetAtt ProcessingQueue.Arn
-
   ProcessingDLQUrl:
     Description: 'SQS dead-letter queue URL'
     Value: !Ref ProcessingDLQ
-
   ProcessingDLQArn:
     Description: 'SQS dead-letter queue ARN'
     Value: !GetAtt ProcessingDLQ.Arn
-
   S3PusherLambdaName:
     Description: 'S3 pusher Lambda name'
     Value: !Ref S3PusherLambda
-
   S3PusherLambdaArn:
     Description: 'S3 pusher Lambda ARN'
     Value: !GetAtt S3PusherLambda.Arn
-
   SqsProcessorLambdaName:
     Description: 'SQS processor Lambda name'
     Value: !Ref SqsProcessorLambda
-
   SqsProcessorLambdaArn:
     Description: 'SQS processor Lambda ARN'
     Value: !GetAtt SqsProcessorLambda.Arn
-
   ProcessingTableName:
     Description: 'DynamoDB table name'
     Value: !Ref ProcessingTable
-
   ProcessingTableArn:
     Description: 'DynamoDB table ARN'
     Value: !GetAtt ProcessingTable.Arn
-
-# ## End of template ##
+  LambdaErrorTopicArn:
+    Description: 'SNS topic ARN for Lambda errors'
+    Value: !Ref LambdaErrorTopic
+  DlqAlertTopicArn:
+    Description: 'SNS topic ARN for DLQ alerts'
+    Value: !Ref DlqAlertTopic
