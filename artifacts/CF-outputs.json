@@ -1,0 +1,62 @@
+[
+    {
+        "OutputKey": "S3PusherLambdaName",
+        "OutputValue": "lambda-static-01-s3-pusher",
+        "Description": "S3 pusher Lambda name"
+    },
+    {
+        "OutputKey": "BucketArn",
+        "OutputValue": "arn:aws:s3:::lambdandynam-static-01-01123581321",
+        "Description": "S3 bucket ARN"
+    },
+    {
+        "OutputKey": "BucketName",
+        "OutputValue": "lambdandynam-static-01-01123581321",
+        "Description": "S3 bucket name"
+    },
+    {
+        "OutputKey": "ProcessingDLQArn",
+        "OutputValue": "arn:aws:sqs:eu-central-1:131471595295:processing-dlq",
+        "Description": "SQS dead-letter queue ARN"
+    },
+    {
+        "OutputKey": "ProcessingQueueUrl",
+        "OutputValue": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue",
+        "Description": "SQS processing queue URL"
+    },
+    {
+        "OutputKey": "S3PusherLambdaArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:131471595295:function:lambda-static-01-s3-pusher",
+        "Description": "S3 pusher Lambda ARN"
+    },
+    {
+        "OutputKey": "SqsProcessorLambdaArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:131471595295:function:sqs-processor-lambda",
+        "Description": "SQS processor Lambda ARN"
+    },
+    {
+        "OutputKey": "ProcessingQueueArn",
+        "OutputValue": "arn:aws:sqs:eu-central-1:131471595295:processing-queue",
+        "Description": "SQS processing queue ARN"
+    },
+    {
+        "OutputKey": "SqsProcessorLambdaName",
+        "OutputValue": "sqs-processor-lambda",
+        "Description": "SQS processor Lambda name"
+    },
+    {
+        "OutputKey": "ProcessingTableName",
+        "OutputValue": "dynamotable-static-01",
+        "Description": "DynamoDB table name"
+    },
+    {
+        "OutputKey": "ProcessingTableArn",
+        "OutputValue": "arn:aws:dynamodb:eu-central-1:131471595295:table/dynamotable-static-01",
+        "Description": "DynamoDB table ARN"
+    },
+    {
+        "OutputKey": "ProcessingDLQUrl",
+        "OutputValue": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-dlq",
+        "Description": "SQS dead-letter queue URL"
+    }
+]
