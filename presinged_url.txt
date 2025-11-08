@@ -1,0 +1,1 @@
+https://test-presing-moe.s3.amazonaws.com/rest-presigned.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAR5HCRK4PS7WUXLXB%2F20250925%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20250925T084346Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host%3Bx-amz-server-side-encryption&X-Amz-Signature=a62c660a5f4fa8c360c6ce2856deb2a75bf47824b8227c86100f0c495a725dfb
