@@ -1,0 +1,203 @@
+$ aws cloudformation describe-change-set \
+  --stack-name s3-lambda-dynamo-stack \
+  --change-set-name xray-update
+{
+    "Changes": [
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Modify",
+                "LogicalResourceId": "LambdaExecutionRole",
+                "PhysicalResourceId": "lambda-static-01-role",
+                "ResourceType": "AWS::IAM::Role",
+                "Replacement": "False",
+                "Scope": [
+                    "Properties"
+                ],
+                "Details": [
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "Policies",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Static",
+                        "ChangeSource": "DirectModification"
+                    }
+                ]
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Modify",
+                "LogicalResourceId": "ProcessingBucket",
+                "PhysicalResourceId": "lambdandynam-static-01-01123581321",
+                "ResourceType": "AWS::S3::Bucket",
+                "Replacement": "False",
+                "Scope": [
+                    "Properties"
+                ],
+                "Details": [
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "NotificationConfiguration",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Dynamic",
+                        "ChangeSource": "DirectModification"
+                    },
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "NotificationConfiguration",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Static",
+                        "ChangeSource": "ResourceAttribute",
+                        "CausingEntity": "S3PusherLambda.Arn"
+                    }
+                ]
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Add",
+                "LogicalResourceId": "S3PusherLambdaInvokePermission",
+                "ResourceType": "AWS::Lambda::Permission",
+                "Scope": [],
+                "Details": []
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Add",
+                "LogicalResourceId": "S3PusherLambda",
+                "ResourceType": "AWS::Lambda::Function",
+                "Scope": [],
+                "Details": []
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Modify",
+                "LogicalResourceId": "SqsEventMapping",
+                "PhysicalResourceId": "318ea308-5926-4535-9735-4c776a4e5761",
+                "ResourceType": "AWS::Lambda::EventSourceMapping",
+                "Replacement": "False",
+                "Scope": [
+                    "Properties"
+                ],
+                "Details": [
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "FunctionName",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Dynamic",
+                        "ChangeSource": "ResourceAttribute",
+                        "CausingEntity": "SqsProcessorLambda.Arn"
+                    }
+                ]
+            }
+        },
+        {
+            "Type": "Resource",
+            "ResourceChange": {
+                "Action": "Modify",
+                "LogicalResourceId": "SqsProcessorLambda",
+                "PhysicalResourceId": "sqs-processor-lambda",
+                "ResourceType": "AWS::Lambda::Function",
+                "Replacement": "False",
+                "Scope": [
+                    "Properties"
+                ],
+                "Details": [
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "Code",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Static",
+                        "ChangeSource": "DirectModification"
+                    },
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "TracingConfig",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Static",
+                        "ChangeSource": "DirectModification"
+                    },
+                    {
+                        "Target": {
+                            "Attribute": "Properties",
+                            "Name": "Role",
+                            "RequiresRecreation": "Never"
+                        },
+                        "Evaluation": "Dynamic",
+                        "ChangeSource": "ResourceAttribute",
+                        "CausingEntity": "LambdaExecutionRole.Arn"
+                    }
+                ]
+            }
+        }
+    ],
+    "ChangeSetName": "xray-update",
+    "ChangeSetId": "arn:aws:cloudformation:eu-central-1:131471595295:changeSet/xray-update/c452b812-577f-4edf-be3b-5560ac11be31",
+    "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+    "StackName": "s3-lambda-dynamo-stack",
+    "Description": null,
+    "Parameters": [
+        {
+            "ParameterKey": "BucketName",
+            "ParameterValue": "lambdandynam-static-01-01123581321"
+        },
+        {
+            "ParameterKey": "DynamoTableName",
+            "ParameterValue": "dynamotable-static-01"
+        },
+        {
+            "ParameterKey": "ProcessingQueueName",
+            "ParameterValue": "processing-queue"
+        },
+        {
+            "ParameterKey": "SqsProcessorLambdaName",
+            "ParameterValue": "sqs-processor-lambda"
+        },
+        {
+            "ParameterKey": "LambdaName",
+            "ParameterValue": "lambda-static-01"
+        },
+        {
+            "ParameterKey": "ProcessingDLQName",
+            "ParameterValue": "processing-dlq"
+        },
+        {
+            "ParameterKey": "LambdaTimeoutSeconds",
+            "ParameterValue": "30"
+        }
+    ],
+    "CreationTime": "2025-10-06T08:29:36.886000+00:00",
+    "ExecutionStatus": "AVAILABLE",
+    "Status": "CREATE_COMPLETE",
+    "StatusReason": null,
+    "NotificationARNs": [],
+    "RollbackConfiguration": {},
+    "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+    ],
+    "Tags": null,
+    "ParentChangeSetId": null,
+    "IncludeNestedStacks": false,
+    "RootChangeSetId": null,
+    "OnStackFailure": null,
+    "ImportExistingResources": null
+}

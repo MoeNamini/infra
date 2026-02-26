@@ -1,0 +1,40 @@
+name: Integration Test - SQS Pipeline (manual)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-central-1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.CI_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CI_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Run integration test
+        run: |
+          export INTEGRATION_BUCKET=${{ secrets.INTEGRATION_BUCKET }}
+          export INTEGRATION_TABLE=${{ secrets.INTEGRATION_TABLE }}
+          export LAMBDA_NAME=${{ secrets.LAMBDA_NAME }}
+          export QUEUE_URL=${{ secrets.QUEUE_URL }}
+          export DLQ_URL=${{ secrets.DLQ_URL }}
+          pytest tests/integration_test_sqs.py -q | tee artifacts/integration-test-output.txt
+          pytest --junitxml=artifacts/integration-junit.xml tests/integration_test_sqs.py || true
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-artifacts
+          path: artifacts/

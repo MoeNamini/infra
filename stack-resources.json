@@ -1,0 +1,136 @@
+{
+    "StackResources": [
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "LambdaErrorMetricFilter",
+            "PhysicalResourceId": "LambdaErrorMetricFilter-ujJBaxHDfTAa",
+            "ResourceType": "AWS::Logs::MetricFilter",
+            "Timestamp": "2025-09-30T14:40:59.354000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "LambdaErrorsAlarm",
+            "PhysicalResourceId": "sqs-processor-lambda-Errors",
+            "ResourceType": "AWS::CloudWatch::Alarm",
+            "Timestamp": "2025-09-30T14:40:49.410000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "LambdaExecutionRole",
+            "PhysicalResourceId": "lambda-static-01-role",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-09-30T14:41:39.384000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "LambdaLogGroup",
+            "PhysicalResourceId": "/aws/lambda/sqs-processor-lambda",
+            "ResourceType": "AWS::Logs::LogGroup",
+            "Timestamp": "2025-09-30T14:40:56.535000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "ProcessingBucket",
+            "PhysicalResourceId": "lambdandynam-static-01-01123581321",
+            "ResourceType": "AWS::S3::Bucket",
+            "Timestamp": "2025-09-30T14:41:36.646000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "ProcessingDLQ",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-dlq",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:41:18.103000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "ProcessingQueue",
+            "PhysicalResourceId": "https://sqs.eu-central-1.amazonaws.com/131471595295/processing-queue",
+            "ResourceType": "AWS::SQS::Queue",
+            "Timestamp": "2025-09-30T14:41:19.868000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "ProcessingQueuePolicy",
+            "PhysicalResourceId": "s3-lambda-dynamo-stack-ProcessingQueuePolicy-CUkNgMuVA9AO",
+            "ResourceType": "AWS::SQS::QueuePolicy",
+            "Timestamp": "2025-09-30T14:41:21.704000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "ProcessingTable",
+            "PhysicalResourceId": "dynamotable-static-01",
+            "ResourceType": "AWS::DynamoDB::Table",
+            "Timestamp": "2025-09-30T14:40:59.039000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "SqsEventMapping",
+            "PhysicalResourceId": "318ea308-5926-4535-9735-4c776a4e5761",
+            "ResourceType": "AWS::Lambda::EventSourceMapping",
+            "Timestamp": "2025-09-30T14:42:12.572000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackName": "s3-lambda-dynamo-stack",
+            "StackId": "arn:aws:cloudformation:eu-central-1:131471595295:stack/s3-lambda-dynamo-stack/6ea98e40-9e0b-11f0-8138-0ad981efe0b1",
+            "LogicalResourceId": "SqsProcessorLambda",
+            "PhysicalResourceId": "sqs-processor-lambda",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-09-30T14:41:49.106000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "DriftInformation": {
+                "StackResourceDriftStatus": "NOT_CHECKED"
+            }
+        }
+    ]
+}
